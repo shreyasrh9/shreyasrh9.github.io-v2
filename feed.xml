@@ -1,0 +1,2536 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Machine Learning Medium</title>
+    <description>Mathematics, Machine Learning, Natural Language Processing Etc.</description>
+    <link>https://machinelearningmedium.com/</link>
+    <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Wed, 27 Dec 2017 12:43:42 +0530</pubDate>
+    <lastBuildDate>Wed, 27 Dec 2017 12:43:42 +0530</lastBuildDate>
+    <generator>Jekyll v3.5.2</generator>
+    
+      <item>
+        <title>Bitcoin</title>
+        <description>&lt;h3 id=&quot;cryptocurrency-series&quot;&gt;Cryptocurrency Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/2017/07/02/blockchain/&quot;&gt;Blockchain&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/12/21/bitcoin-satoshi-nakamoto/&quot;&gt;Bitcoin&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A purely peer-to-peer version of electronic cash would allow online payments to be sent directly from one party to another without going through a financial institution.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Part solution to this task is given by digital signatures, but the other half of the solution posed a major question in developing such systems - the part that requires &lt;strong&gt;a system to prevent double spending&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;In the current centralized money tender distributed, this role of preventing the double spending is done by a centralized third-party authority. But in a peer-to-peer network this centralized server would not be available and thus would require a different methodology.&lt;/p&gt;
+
+&lt;p&gt;Bitcoin, proposed by &lt;strong&gt;Satoshi Nakamoto&lt;/strong&gt;, was to solve this very problem on the peer-to-peer network. The network timestamps transactions by hashing them into an ongoing chain of hash-based proof-of-work, forming a record that cannot be changed without redoing the proof-of-work.&lt;/p&gt;
+
+&lt;h3 id=&quot;current-system&quot;&gt;Current System&lt;/h3&gt;
+
+&lt;p&gt;Current economy is based on trusted third-parties to process electronic payments. These systems suffer from the inherent weaknesses of the trust based model. Completely non-reversible transactions are not possible because banks cannot avoid mediating disputes.&lt;/p&gt;
+
+&lt;p&gt;Because of cost of mediation, the transaction costs are high which inturn limit the minimum practical transaction size thus cutting off the possibility of small casual transaction.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;With the possibility of reversal, the need for trust spreads.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;proposed-system&quot;&gt;Proposed System&lt;/h3&gt;
+
+&lt;p&gt;Bitcoin proposed a system where &lt;strong&gt;trust is replaced by cryptographic proof&lt;/strong&gt;, allowing any two willing parties to transact directly without the need of a supporting trusted third party.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Computationally irreversible transactions prevent frauds.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Bitcoin proposed to tackle the issue of double-spending, using a peer-to-peer distributed timestamp server to generate computational proof of the chronological order of transactions.&lt;/p&gt;
+
+&lt;p&gt;The system is secure as long as honest nodes collectively control more CPU power than any cooperating group of attacker nodes.&lt;/p&gt;
+
+&lt;h3 id=&quot;transactions&quot;&gt;Transactions&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Electronic coin is defined as a chain of digital signatures.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;A coin is transferred by an owner signing a hash of previous transaction and the public key of the next owner and adding these to then end of the coin.&lt;/p&gt;
+
+&lt;p&gt;The signature can be verified by the payee to check the chain of ownership.&lt;/p&gt;
+
+&lt;p&gt;The payee can still however not check for double-spending.&lt;/p&gt;
+
+&lt;p&gt;Traditional solution of this involves introducing a trusted central authority, or mint, that checks every transaction for double-spending. In such a system, after every transaction the coin must be returned to the mint to issue a new coin, and only coins issued directly from the mint are trusted not to be double-spent. This still does not solve the basic problem of dependency on company running the mint, which is basically serving the same purpose as that of a bank in the current system.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-1-transaction.png&quot; alt=&quot;Flow of Transactions&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The only way to confirm the absence of a transaction is to have a copy of all the transactions. To accomplish this in a decentralized system, the transactions must be publically announced and there is a need for a system for participants to agree on a single history of the order in which they were received. So, at the time of the transaction, the payee needs a proof that the majority of the nodes agreed it was the first received one.&lt;/p&gt;
+
+&lt;h3 id=&quot;timestamp-server&quot;&gt;Timestamp Server&lt;/h3&gt;
+
+&lt;p&gt;A timestamp server basically takes a hash of a block of items to be timestamped and widely publishes it, where the timestamp proves that the data must have existed at the time, in order to get the hash.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-2-blockchain.png&quot; alt=&quot;Timestamp Server&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Each timestamp includes previous timestamp in its hash, forming a chain (blockchain), with each timestamp reinforcing the ones before it.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;proof-of-work&quot;&gt;Proof-of-Work&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A system to deter denial of service attacks and other service abuses such as spam on a network by requiring some work from the service requester, usually meaning processing time by a computer.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In case of bitcoins, the proof-of-work involves scanning for a value that when hashed along with the contents of the transaction blocks using cryptographic hashes such as SHA-256, gives a hash that begins with a specific number of zero bits. &lt;strong&gt;The average work required is exponential in the number of zero bits.&lt;/strong&gt; Proof-of-Work is generally a problem that is fairly tough to solve but very easy to verify.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;time&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;hashlib&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;json&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;plt&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;transaction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;'A paid B 25 A_public_key'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;s&quot;&gt;'A paid C 50 A_public_key'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;s&quot;&gt;'C paid B 10 C_public_key'&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;transaction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dumps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transaction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;encode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;difficulty_bits&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;time_taken&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num_bits&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;difficulty_bits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;proved&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;proof&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;start_time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;proved&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;transaction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;proof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;encode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;current_hash&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hashlib&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sha256&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hexdigest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_hash&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;startswith&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'0'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num_bits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current_hash&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;proof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;proved&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;time_taken&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start_time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;proof&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;proof&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;difficulty_bits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time_taken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+Outputs
+-------
+cb87ca935b8b44e94f5c670ecd375ba88ab7616aeab4c4c4369fe79e9c153f95
+0
+0c1d9b1549d14612571040e8352af4175a41b84a805a08880d3acdd5aad998be
+5
+00a51beea09d1fae73f3e18682445a3eb9bffc2cabf17f87f90f193c9eca1af3
+396
+00010ff4f55c002484ee13841be9a3c46aba3038a1046d604ac8cee7349a2228
+514
+0000a3c456eff341c9988b194231b02eb547a36a8134d095a5e1c4efb05dc7e3
+22344
+000002128ccfc4d1e662a6ceb8053860b887929b691c2f8506b0843e9a57fe34
+3355879
+000000bfc98081b9aff064455708d2d8fcc2afeac81b5a0b03a6fd926db1ce36
+19659271
+0000000cbd6302c37b40102ef55040e4315b63b39640110b679e033c44a8b2b0
+310723836
+
+Time Taken
+----------
+[0.0003619194030761719,
+ 0.00020599365234375,
+ 0.0012040138244628906,
+ 0.0016019344329833984,
+ 0.07679605484008789,
+ 8.218470811843872,
+ 47.986721992492676,
+ 740.9898428916931]
+&quot;&quot;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-8-proof-of-work-plot.png&quot; alt=&quot;Proof-of-work plot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Basic needs of such system of proof-of-work are fulfilled by cryptographic hashes, that are often seen as one way functions, i.e. the only way to get the input given an output is to use the bruteforce approach and check all possible values of inputs and arriving at the correct candidate.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A nonce is an arbitrary number that can only be used once&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In the bitcoin’s timestamp network, the proof-of-work is implemented by incrementing a nonce in the block until a value is found that gives the block the required number of leading zero bits.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-3-proof-of-work.png&quot; alt=&quot;Proof-of-work Flow&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Once the CPU effort has been expended to satisfy the proof-of-work, the block cannot be changed without redoing the work.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;As the later blocks consume the hashes of previous blocks, changing a transaction in earlier block would require redoing the work for all the leading blocks.&lt;/p&gt;
+
+&lt;h3 id=&quot;majority-decision-making&quot;&gt;Majority Decision Making&lt;/h3&gt;
+
+&lt;p&gt;Proof-of-Work also gives a solution to determining representation in majority decision making. The majority decision is represented by the longest chain, i.e. the greatest proof-of-work. So if the majority CPU power is held by honest nodes, then the honest chain would grow faster and outpace any chain being proposed by a pool of attacking nodes.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;To compensate hardware power and varying number of nodes over time, the proof-of-work difficulty is determined by a moving average targeting an average number of blocks per hour, i.e. if the blocks are generated too fast, the difficulty increases for subsequent blocks.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;network-protocols&quot;&gt;Network Protocols&lt;/h3&gt;
+
+&lt;p&gt;Steps to run the network are as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;New transactions are broadcast to all nodes.&lt;/li&gt;
+  &lt;li&gt;Each node collects new transaction into a block.&lt;/li&gt;
+  &lt;li&gt;Each node works on finding a difficult proof-of-work for its block.&lt;/li&gt;
+  &lt;li&gt;Upon finding the solution, it broadcasts the block to all nodes.&lt;/li&gt;
+  &lt;li&gt;Nodes accept a new block if all the transactions on it are valid and not already spent.&lt;/li&gt;
+  &lt;li&gt;Nodes express their acceptance of the block by working on creating next block in the chain, using the hash of the accepted block as the previous hash.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Nodes always consider the longest chain to be the correct one and keep on working to extend it.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;If a node does not receive a block, it will request it when it receives the next block and realizes that it missed one.&lt;/p&gt;
+
+&lt;h3 id=&quot;mining-incentive&quot;&gt;Mining Incentive&lt;/h3&gt;
+
+&lt;p&gt;By convention of the protocol, the first transaction of a block is a special transaction that starts a new coin owned by the creator of the block.&lt;/p&gt;
+
+&lt;p&gt;It is this, that acts as an incentive for the nodes to support the network, and provides a way to initially distribute coins into circulation.&lt;/p&gt;
+
+&lt;p&gt;Incentive can also be funded in the form of a transaction fees.&lt;/p&gt;
+
+&lt;p&gt;Incentive will also encourage nodes to stay honest. Because an attacker with more compute power would find it more favourable to play by rules and make more transaction fee, instead of competing with rest to fraud the system and invalidating his own wealth in the process by sabotaging the system.&lt;/p&gt;
+
+&lt;h3 id=&quot;memory-optimizations&quot;&gt;Memory Optimizations&lt;/h3&gt;
+
+&lt;p&gt;After the latest transaction is reinforced with several blocks stacking on top of it, the spent transactions can be discarded from the disk.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Transactions are hashed in a Merkle Tree, with only root included in the block’s hash.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-4-merkle-tree.png&quot; alt=&quot;Memory Optimizations&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;A block header with no transaction is about 80 bytes, and blocks are generated every 10 minutes, then every hour about 6 blocks would be generated. So the total space required by blocks generated in a year would be about 4.2MB (i.e 80 bytes * 6 * 24 * 365). With the current capabilities of system memories, storage would not pose a problem to the system.&lt;/p&gt;
+
+&lt;h3 id=&quot;payment-verification&quot;&gt;Payment Verification&lt;/h3&gt;
+
+&lt;p&gt;The system makes it possible to verify payments without running the full network node.&lt;/p&gt;
+
+&lt;p&gt;Verification can be done by keeping a copy of the block headers of the longest proof-of-work chain, and obtaining the Merkle branch linking the transaction to the block it’s timestamped in.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-5-validating-transaction.png&quot; alt=&quot;Payment Verification Process&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;By linking the transaction to a place in the chain, one can see if network nodes have accepted it by checking the proof-of-work, which would be further confirmed by blocks built on top of it in the chain.&lt;/p&gt;
+
+&lt;p&gt;Again, the verification is only reliable as long as honest nodes control the network. Because the simplified verification method can be fooled by an attacker’s fabricated transactions for as long as the attacker can overpower the compute resources of the unified honest nodes.&lt;/p&gt;
+
+&lt;h3 id=&quot;combining-and-splitting-value&quot;&gt;Combining and Splitting Value&lt;/h3&gt;
+
+&lt;p&gt;Even though it is possible to handle each coin individually, it would be unweildy to make a seperate transaction for every cent in a transfer.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;To allow value to be split and combined, transactions contain multiple inputs and outputs.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-6-splitting-and-joining.png&quot; alt=&quot;Value Handling Protocols&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Usually, there is a single input from a larger previous transaction or multiple inputs combining smaller amounts, and at most two outputs: &lt;strong&gt;one for the payment, and one to return the change, if any, back to the sender&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;privacy&quot;&gt;Privacy&lt;/h3&gt;
+
+&lt;p&gt;Traditional banking models achieve privacy through limiting access to information to the parties involved and the trusted third party.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-7-privacy.png&quot; alt=&quot;Privacy Models&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In the proposed system, it is achieved by anonymizing the public keys that are used to sign a transaction. So, the public ledger can see someone is sending an amount to someone else, but without information linking the transaction to anyone (similar to tape in a stock exchange).&lt;/p&gt;
+
+&lt;p&gt;Some linking is still unavoidable with multi-input transactions, which reveals that the inputs originated from the same owner. So if one owner’s key is revealed, linking will allow to discover other transactions associated with that owner.&lt;/p&gt;
+
+&lt;h3 id=&quot;mathematics-of-bitcoin&quot;&gt;Mathematics of Bitcoin&lt;/h3&gt;
+
+&lt;p&gt;If there were a scenario where an attacker is generating a alternate chain faster than the honest chain, it could still not generate value out of thin air or take someone else’s money because it will be rejected by the corresponding node which owns that token.&lt;/p&gt;
+
+&lt;p&gt;So all it is capable of doing is to double-spend its own money.&lt;/p&gt;
+
+&lt;p&gt;Basically the race between the honest chain and the alternate chain can be characterized as a &lt;strong&gt;Binomial Random Walk&lt;/strong&gt;, where success event is honest chain being extended by a block and failure event is the alternate chain extented by a block gaining a lead on the honest chain.&lt;/p&gt;
+
+&lt;p&gt;In such a case, the probability of an attacker catching up with the honest chain by making up for the deficit can be modeled similar to a &lt;strong&gt;Gambler’s Ruin Problem&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;probability that the attacker ever reaches a breakeven&lt;/strong&gt; is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+q_z = 
+\begin{cases}
+1 &amp; \text{ if } p \leq q \\
+(q/p)^z &amp; \text{ if } p \gt q
+\end{cases} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;where,&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;\(p\) is the probability of an honest chain extending&lt;/li&gt;
+  &lt;li&gt;\(q\) is the probability of a attacker chain extending&lt;/li&gt;
+  &lt;li&gt;\(q_z\) is the probability of the attacker catching up with the honest chain from \(z\) blocks deficit.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Given the assumption that the pool of honest compute power is greater than that of attackers, it is safe to assume that \(p \gt q\). So the probability drops exponentially as the number of blocks of deficit for an attacker increases. So after a fair lead, the probability of attacker to catch up is vanishingly small.&lt;/p&gt;
+
+&lt;h3 id=&quot;time-for-establishing-trust&quot;&gt;Time for Establishing Trust&lt;/h3&gt;
+
+&lt;p&gt;Assume that the sender of a transaction is an attacker who wants to make the receiver believe that he paid him for a while, and switch it back to himself after sometime.&lt;/p&gt;
+
+&lt;p&gt;So initially the receiver will generate a new key pair and give the public key to the attacker for making the transfer. This prevents the attacker from preparing a chain of blocks in advance because of the dynamic nature of the public key generated.&lt;/p&gt;
+
+&lt;p&gt;So once the transaction is made, the attacker starts working on a alternate chain where the transactions are different.&lt;/p&gt;
+
+&lt;p&gt;Meanwhile the receiver waits for the transaction to be added to a block and another \(z\) blocks to be chained on top of that block.&lt;/p&gt;
+
+&lt;p&gt;The receiver does not know the progress of the attacker, but assuming the honest nodes took the average time to build a block, the attacker’s progress will be a Poisson Distribution with the expected value,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\lambda = z {q \over p}&lt;/script&gt;
+
+&lt;p&gt;Probability that the attacker could catch up can be calculated by mutliplying the Poisson density for each amount of progress by the probability that he could catch up from that point, given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\sum_{k=0}^\infty \frac{\lambda^k\,e^{-\lambda}}{k!} \cdot \begin{cases} (q/p)^{(z-k)} &amp; \text{ if } k \leq z \\ 1 &amp; \text{ if } k \gt z \end{cases} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Rearranging to avoid infinite summation of the distribution,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;1 - \sum_{k=0}^z \frac{\lambda^k\,e^{-\lambda}}{k!} (1 - (q/p)^{(z-k)})&lt;/script&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;math&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;factorial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;fac&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;fac&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fac&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;calculate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;lamda&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lamda&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lamda&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;factorial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\t&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;=&amp;gt; &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;round&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;calculate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+Output
+------
+0   =&amp;gt;  1.0
+5   =&amp;gt;  0.17735231
+10  =&amp;gt;  0.04166048
+15  =&amp;gt;  0.01010076
+20  =&amp;gt;  0.0024804
+25  =&amp;gt;  0.00061323
+&quot;&quot;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Calculating the values, it is observed that the probability drops off exponentially with z.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Bitcoin does not need a third party to enforce trust.&lt;/li&gt;
+  &lt;li&gt;Coin framework is based on digital signatures.&lt;/li&gt;
+  &lt;li&gt;A peer-to-peer network using proof-of-work records a history of transaction.&lt;/li&gt;
+  &lt;li&gt;Nodes can leave or rejoin the system according to their wish.&lt;/li&gt;
+  &lt;li&gt;Any needed rules and incentives can be enforced with this consensus mechanism.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://bitcoin.org/bitcoin.pdf&quot; target=&quot;_blank&quot;&gt;Bitcoin: A Peer-to-Peer Electronic Cash System&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 21 Dec 2017 00:00:00 +0530</pubDate>
+        <link>https://machinelearningmedium.com/2017/12/21/bitcoin-satoshi-nakamoto/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2017/12/21/bitcoin-satoshi-nakamoto/</guid>
+        
+        <category>concept</category>
+        
+        <category>references</category>
+        
+        <category>papers</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>The Mysterious Primes</title>
+        <description>&lt;h3 id=&quot;what-is-mathematics-series&quot;&gt;What is Mathematics Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/2017/10/27/number-system/&quot;&gt;What is Number System ?&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/10/28/mathematical-induction/&quot;&gt;Mathematical Induction&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/11/01/prime-numbers/&quot;&gt;The Mysterious Primes&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;In mathematics, most statements in number theory are concerned not with a single object, but with a whole class of objects that have a common property, such as the class of all even integers etc.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Mathematics is the queen of sciences and the theory of numbers is the queen of the mathematics.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;One such class of number, called the &lt;strong&gt;prime numbers (or primes)&lt;/strong&gt; are of fundamental importance.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-prime-numbers&quot;&gt;The Prime Numbers&lt;/h3&gt;
+
+&lt;p&gt;Most numbers can be resolved into smaller factors, but the ones that cannot be resolved are known as prime numbers or primes.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A prime is an integer \(p\), greater than one, which has no factors other than itself and one.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;A integer \(a\) is a factor or divisor of integer \(b\), if there exists an integer \(c\) such that \(b=ac\). The numbers \(2, 3, 5, 7, \cdots \) are primes.&lt;/p&gt;
+
+&lt;p&gt;So effectively, every integer can be expressed as a product of primes. And a number which not prime (other than 0 and 1) is called &lt;strong&gt;composite&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The set of all primes is a infinite set.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The infinitude of primes is proved by contradiction. Say there exists only a finite number of primes, \(n\) and represented by set \({p_1, p_2, \cdots p_n}\). Then according to the assumption any number greater than numbers in the finite set must be composite. But it is possible to come up with a number, \(A\) greater than all these \(n\) primes given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;A = p_1p_2\cdots p_n + 1 \tag{1}&lt;/script&gt;
+
+&lt;p&gt;This contracdicts the assumption of finite set of primes and hence its proved that there is a infinite set of primes.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Every integer N greater than 1 can be factored into a product of primes in only one way.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The proof of this can be achieved by contradiction once again. If there exists a positive prime integer capable of decomposition into two essentially different products of primes, there will be a smallest such integer (using the principle of smallest integer), given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;m = p_1p_2 \cdots p_r = q_1q_2 \cdots q_s \tag{2} \label{2}&lt;/script&gt;
+
+&lt;p&gt;where \(p’s\) and \(q’s\) are primes. By rearranging if necessary, its possible to get the following order,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;p_1 \leq p_2 \leq \cdots \leq p_r \text{, and } q_1 \leq q_2 \leq \cdots \leq q_s \tag{3} \label{3}&lt;/script&gt;
+
+&lt;p&gt;Where, \(p_1 \ne q_1\) because then one could cancel them in \eqref{2} and come up with another number smaller than \(m\) with two distinct prime factorization which would contradict the priniciple of smallest integer.&lt;/p&gt;
+
+&lt;p&gt;So, either \(p_1 \lt q_1\) or \(q_1 \lt p_1\).&lt;/p&gt;
+
+&lt;p&gt;Let, \(p_1 \lt q_1\) (if \(q_1 \lt p_1\), interchange the sequences in the analysis presented). Let \(m’\) be an integer given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;m' = m - (p_1q_2\cdots q_s) \tag{4} \label{4}&lt;/script&gt;
+
+&lt;p&gt;Substituting, for \(m\) in \eqref{4} using \eqref{2},&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;m' = (p_1p_2 \cdots p_r) - (p_1q_2\cdots q_s) = p_1(p_2 \cdots p_r - q_2\cdots q_s) \tag{5} \label{5}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;m' = (q_1q_2 \cdots q_s) - (p_1q_2\cdots q_s) = (q_1 - p_1)(q_2 \cdots q_s) \tag{6} \label{6}&lt;/script&gt;
+
+&lt;p&gt;Since \(q_1 \gt p_1\), it follows from \eqref{6} that \(m’\) is a positive integer, while from \eqref{4} it follows that \(m’ \lt m\). Hence the prime factorization of \(m’\) must be unique.&lt;/p&gt;
+
+&lt;p&gt;From \eqref{5} \(p_1\) is a factor of \(m’\), so in \eqref{6}, \(p_1\) must be a factor of either \((q_1 - p_1)\) or \(q_2 \cdots q_s\). Since \(p_1 \lt q_1\) and \eqref{3}, \(p_1\) cannot be a factor of any of the \(q’s\) nor equal to them. So, \(p_1\) must be a factor of \(q_1 - p_1\). So there exists an integer \(h\), such that,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;q_1 - p_1 = p_1 \cdot h \text{ or } q_1 = p_1(h+1) \tag{7} \label{7}&lt;/script&gt;
+
+&lt;p&gt;But, \eqref{7} is a contradicts the fact that \(q_1\) is a prime number. This points to the fact that the initial assumption of a number having two distinct prime factorizations must be wrong.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;If a prime \(p\), is a factor of the product \(ab\), then \(p\) must be a factor of either \(a\) or \(b\).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Also, if prime factorization of \(a\) can be expressed as,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;a = p_1^{\alpha_1} p_2^{\alpha_2} \cdots p_r^{\alpha_r} \tag{8} \label{8}&lt;/script&gt;
+
+&lt;p&gt;where \(p’s\) are distinct primes, each raised to a certain power. The number of different divisors of \(a\) (including \(a\) and 1) is given by&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(\alpha_1 + 1)(\alpha_2 + 1) \cdots (\alpha_r + 1) \tag{9} \label{9}&lt;/script&gt;
+
+&lt;p&gt;and all the divisors of the number \(a\) are given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;b = p_1^{\beta_1} p_2^{\beta_2} \cdots p_r^{\beta_r} \tag{10} \label{10}&lt;/script&gt;
+
+&lt;p&gt;where \(\beta’s\) are integers satisfying inequalities,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;0 \leq \beta_1 \leq \alpha_1,\,0 \leq \beta_2 \leq \alpha_2,\, \cdots 0 \leq \beta_r \leq \alpha_r&lt;/script&gt;
+
+&lt;h3 id=&quot;distribution-of-primes&quot;&gt;Distribution of Primes&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;In mathematics, the sieve of Eratosthenes is a simple, ancient algorithm for finding all prime numbers up to any given limit.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Attempts have been made at finding simple arithmetic formulas that yield only primes, even though they may not give all of them.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Fermat’s Conjecture&lt;/strong&gt; : All number of the form \(F(n) = 2^{2^n} +1\) are primes, but was proved incorrect by Euler who discovered that \(2^{2^5} + = 641 \cdot 6700417\) meaning \(F(5)\) is not a prime.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Any of the numbers \(F(n)\) are not prime for \(n&amp;gt;4\).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;There are various other similar expressions which produce primes until a certain limit.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;\(f(n) = n^2 - n + 41\): For limit \(n &amp;lt; 41\).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;\(f(n) = n^2 - 79n + 1601\): For limit \(n &amp;lt; 80\)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;It’s been a futile effort to seek equation of a simple type which produces only primes. Even less promising is the attempt to find an algebraic formula that yields all the primes.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;primes-in-arithmetic-progression&quot;&gt;Primes in Arithmetic Progression&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;In each arithmetic progression, \(a,\, a+d,\, a+2d,\, \cdots a+nd,\, \cdots\), where \(a\) and \(d\) have no common factors, there are infinitely many primes.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The proof to this theorem could not be cracked for several years until finally it was presented by Lejeune Dirichlet and even after a hundred years it’s not been simplified any further and would be a series of posts in itself if presented here.&lt;/p&gt;
+
+&lt;p&gt;Though a generalized Euclid’s proof of infinitude of primes can be used to cover some special arithmetic progression such as \(4n+3\) and \(6n + 5\).&lt;/p&gt;
+
+&lt;h3 id=&quot;proof-of-infinitude-of-arithmetic-progressions-4n3&quot;&gt;Proof of Infinitude of Arithmetic Progressions: \(4n+3\)&lt;/h3&gt;
+
+&lt;p&gt;Any prime greater than 2 must be a odd prime and hence must be of the form \(4n+1\) or \(4n+3\) for some integer \(n\).&lt;/p&gt;
+
+&lt;p&gt;Also, the product of two numbers of the form \(4n+1\) is again of the same form, since&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(4a+1)(4b+1) = 16ab + 4a + 4b + 1 = 4(4ab + a + b) + 1 \tag{11} \label{11}&lt;/script&gt;
+
+&lt;p&gt;Let there be a finite number of primes in this arithmetic progression given by, \(p_1,\, p_2,\, \cdots p_n\) of the form \(4n+3\).&lt;/p&gt;
+
+&lt;p&gt;Consider the number,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;N = 4(p_1p_2 \cdots p_n) - 1 = 4(p_1 \cdots p_n - 1) + 3 \tag{12} \label{12}&lt;/script&gt;
+
+&lt;p&gt;From \eqref{12}, either N has to be a prime or it can be decomposed into a product of primes, none of which can be \(p_1,\, p_2,\, \cdots p_n\) because they leave a remainder \(-1\) on dividing \(N\).&lt;/p&gt;
+
+&lt;p&gt;Also, all of the primes must not be of the form \(4n+1\) because the form of \(N\) is \(4n+3\) and \eqref{11}.&lt;/p&gt;
+
+&lt;p&gt;Hence, one of the factors must of the form \(4n+3\), which is impossible, since none of the \(p’s\), which was assumed to be the finite set of primes of the form \(4n+3\), can be a factor of \(N\) (using \eqref{12}).&lt;/p&gt;
+
+&lt;p&gt;So, the initial assumption that number of primes in arithmetic progression of the form \(4n+3\) is finite is incorrect because of the contradiction encountered.&lt;/p&gt;
+
+&lt;h3 id=&quot;proof-of-infinitude-of-arithmetic-progressions-6n5&quot;&gt;Proof of Infinitude of Arithmetic Progressions: \(6n+5\)&lt;/h3&gt;
+
+&lt;p&gt;Any prime greater than 2 must be a odd prime and hence must be of the form \(6n+1\) or \(6n+3\) or \(6n+5\) for some integer \(n\).&lt;/p&gt;
+
+&lt;p&gt;Let there be a finite number of primes in this arithmetic progression given by, \(p_1,\, p_2,\, \cdots p_n\) of the form \(6n+5\).&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(6a+1)(6b+1) = 36ab + 6a + 6b + 1 = 6(6ab + a + b) + 1 \tag{13} \label{13}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(6a+3)(6b+3) = 36ab + 18a + 18b + 9 = 6(6ab + 3a + 3b + 1) + 3 \tag{14} \label{14}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(6a+3)(6b+1) = 36ab + 6a + 18b + 3 = 6(6ab + a + 3b) + 3 \tag{15} \label{15}&lt;/script&gt;
+
+&lt;p&gt;From \eqref{13}, \eqref{14} and \eqref{15}, a number of the form \(6n+5\) cannot be achieved using only primes of the form \(6n+1\) and \(6n+3\).&lt;/p&gt;
+
+&lt;p&gt;Consider the number,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;N = 6(p_1p_2 \cdots p_n) - 1 = 6(p_1 \cdots p_n - 1) + 5 \tag{16} \label{16}&lt;/script&gt;
+
+&lt;p&gt;From \eqref{16}, either N has to be a prime or it can be decomposed into a product of primes, none of which can be \(p_1,\, p_2,\, \cdots p_n\) because they leave a remainder \(-1\) on dividing \(N\).&lt;/p&gt;
+
+&lt;p&gt;Also, all of the primes must not be only of the form \(6n+1\) and \(6n+3\) because the form of \(N\) is \(6n+5\) and \eqref{13}, \eqref{14} and \eqref{15} show it cannot be achieved otherwise.&lt;/p&gt;
+
+&lt;p&gt;Hence, one of the factors must of the form \(6n+5\), which is impossible, since none of the \(p’s\), which was assumed to be the finite set of primes of the form \(6n+5\), can be a factor of \(N\) (using \eqref{16}).&lt;/p&gt;
+
+&lt;p&gt;So, the initial assumption that number of primes in arithmetic progression of the form \(6n+5\) is finite is incorrect because of the contradiction encountered.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-prime-number-theorem&quot;&gt;The Prime Number Theorem&lt;/h3&gt;
+
+&lt;p&gt;Let \(A_n\) denote the number of primes among the integers \(1, 2, 3, \cdots , n\).&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The density of primes among first n integers is given by the ratio \({A_n \over n} \).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Prime number theorem describes the asymptotic distribution of the primes among positive integers. It states that,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\lim_{n \to \infty} {A_n/n \over 1 / log\,n} = 1 \tag{17}&lt;/script&gt;
+
+&lt;h3 id=&quot;unsolved-problems-concerning-primes&quot;&gt;Unsolved Problems Concerning Primes&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Goldbach Conjecture:&lt;/strong&gt; Goldbach’s conjecture is one of the oldest and best-known unsolved problems in number theory and all of mathematics. It states: Every even integer greater than 2 can be expressed as the sum of two primes.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Polignac’s conjecture&lt;/strong&gt;: Twin prime conjecture, also known as Polignac’s conjecture, in number theory, assertion that there are infinitely many twin primes, or pairs of primes that differ by 2.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These are simple to experiment with, but mathematically some of the most mysterious problems. These are the properties of the number system that shows that a lot is still left to be discovered about the number system.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://drive.google.com/open?id=0BxedRvE84NXkSy1sdzJKNDlHZGM&quot; target=&quot;_blank&quot;&gt;What is Mathematics? Second Edition - Chapter I: Natural Numbers&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 01 Nov 2017 00:00:00 +0530</pubDate>
+        <link>https://machinelearningmedium.com/2017/11/01/prime-numbers/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2017/11/01/prime-numbers/</guid>
+        
+        <category>mathematics</category>
+        
+        <category>number system</category>
+        
+        <category>what is mathematics</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Mathematical Induction</title>
+        <description>&lt;h3 id=&quot;what-is-mathematics-series&quot;&gt;What is Mathematics Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/2017/10/27/number-system/&quot;&gt;What is Number System ?&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/10/28/mathematical-induction/&quot;&gt;Mathematical Induction&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/11/01/prime-numbers/&quot;&gt;The Mysterious Primes&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;why-mathematical-induction&quot;&gt;Why Mathematical Induction?&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;There are infinitely many integers.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The step-by-step procedure of passing from \(n\) to \(n+1\) which generates the infinite sequence of integers forms the basis of one of the most fundamental patterns of mathematical reasoning, the principle of mathematical induction.&lt;/p&gt;
+
+&lt;p&gt;Mathematical Induction is used to establish the truth of a mathematical theorem for an infinite sequence of cases.&lt;/p&gt;
+
+&lt;p&gt;There are two steps in proving a theorem, \(A\) by mathematical induction:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The first statement \(A_1\) must be true.&lt;/li&gt;
+  &lt;li&gt;If a statement \(A_r\) is true then the statement \(A_{r+1}\) should be true too.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;That these two conditions are sufficient to establish the truth of all the statements, \(A_1, A_2, \cdots \) is a logical principle which is as fundamental to mathematics as are the classical rules of Aristotelian logic.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Suppose that a) by some mathematical argument it is shown that if \(r\) is any integer and if assertion \(A_r\) is known to be true then the truth of assertion \(A_{r+1}\) will follow, and that b) the first proposition \(A_1\) is known to be true. Then all the propositions of the sequence must be true, and A is proved.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The principle of mathematical induction rests on the fact that after any integer \(r\) there is a next, \(r+1\), and that any desired integer \(n\) may be reached by a finite number of such steps, starting from the integer 1.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Although the principle of mathematical induction suffices to prove a theorem or formula once it is expressed, the proof gives no indication of how this formula was arrived at in the first place. So, it should be more fittingly called a verification.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;proof-for-arithmetic-progression&quot;&gt;Proof for Arithmetic Progression&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;For every value of n, the sum \(1 + 2 + \cdots + n\) of the first n integers is equal to \(\frac {n(n+1)} {2} \)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;For any \(r\) is given by assertion \(A_r\) is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;1 + 2 + 3 + \cdots + r = \frac {r(r+1)} {2} \label{1} \tag{1}&lt;/script&gt;
+
+&lt;p&gt;Adding \((r+1)\) to both LHS and RHS of \eqref{1},&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+1 + 2 + 3 + \cdots + r + (r+1) &amp;= \frac {r(r+1)} {2} + (r+1) \\
+                               &amp;= \frac {r(r+1) + 2(r+1)} {2} \\
+                               &amp;= \frac {(r+1)((r+1) + 1)} {2}
+                               \label{2} \tag{2}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;\eqref{2} is nothing but assertion, \(A_{r+1}\).&lt;/p&gt;
+
+&lt;p&gt;Also for \(r=1\), assertion \(A_1\) is true because, from \eqref{1},&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;1 = \frac {1(1+1)} {2} \tag{3} \label{3}&lt;/script&gt;
+
+&lt;p&gt;So, using \eqref{2} and \eqref{3}, mathematical induction proves that the assertion in \eqref{1} holds for all positive integers, \(n\).&lt;/p&gt;
+
+&lt;h3 id=&quot;proof-for-geometric-progression&quot;&gt;Proof for Geometric Progression&lt;/h3&gt;
+
+&lt;p&gt;The theorem states that, for every value of \(n\),&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;G_n = a + aq + aq^2 + \cdots + aq^n = a \frac{1 - q^{n+1}} {1-q} \label{4} \tag{4}&lt;/script&gt;
+
+&lt;p&gt;The assertion holds true for \(n=1\), because,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+G_1 = a + aq &amp;= a \frac{1 - q^{2}} {1-q} \\
+             &amp;= a \frac{(1-q) (1+q)} {1-q} \\
+             &amp;= a (1+q)  \\
+    \tag{5} \label{5}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Let’s assume \(G_r\) is true, i.e.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;G_r = a + aq + aq^2 + \cdots + aq^r = a \frac{1 - q^{r+1}} {1-q} \label{6} \tag{6}&lt;/script&gt;
+
+&lt;p&gt;Then,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+G_{r+1} &amp;= (a + aq + aq^2 + \cdots + aq^r) + aq^{r+1} \\
+        &amp;= a \frac{1 - q^{r+1}} {1-q} + aq^{r+1} \\
+        &amp;= \frac{a - aq^{r+1} + aq^{r+1} - aq^{r+2}} {1-q} \\
+        &amp;= a \frac{1 - q^{(r+1) + 1}} {1-q} \\
+        \label{7} \tag{7}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;But \eqref{7} is precisely the assertion \eqref{4} for the case \(n=r+1\). Hence, using \eqref{5} and \eqref{7} the assertion \eqref{4} is proved by mathematical induction.&lt;/p&gt;
+
+&lt;h3 id=&quot;proof-for-sum-of-first-n-squares&quot;&gt;Proof for Sum of First n Squares&lt;/h3&gt;
+
+&lt;p&gt;The theorem states that, for every value of \(n\),&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;A_n = 1^2 + 2^2 + \cdots + n^2 = \frac {n(n+1)(2n+1)} {6} \tag{8} \label{8}&lt;/script&gt;
+
+&lt;p&gt;The assertion holds true for \(n=1\), because,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;A_1 = 1^2 = \frac{1(1+1)(2(1)+1)} {6} = 1 \tag{9} \label{9}&lt;/script&gt;
+
+&lt;p&gt;Let’s assume \(A_r\) is true, i.e.,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;A_r = 1^2 + 2^2 + \cdots + r^2 = \frac {r(r+1)(2r+1)} {6} \tag{10} \label{10}&lt;/script&gt;
+
+&lt;p&gt;Then,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+A_{r+1} = (1^2 + 2^2 + \cdots + r^2) + (r+1)^2 &amp;= \frac {r(r+1)(2r+1)} {6} + (r+1)^2 \\
+&amp;= (r+1)\frac{r(2r+1) + 6(r+1)} {6} \\
+&amp;= (r+1) \frac {2r^2 + 7r + 6} {6} \\
+&amp;= \frac{(r+1) (r+2) (2r+3)} {6} \\
+\label{11} \tag{11}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;which is precisely the assertion \eqref{8} for \(n = r+1\). So, using \eqref{9} and \eqref{11}, mathematical induction proves the assertion.&lt;/p&gt;
+
+&lt;h3 id=&quot;proof-for-sum-of-first-n-cubes&quot;&gt;Proof for Sum of First n Cubes&lt;/h3&gt;
+
+&lt;p&gt;The theorem states that, for every value of \(n\),&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;A_n = 1^3 + 2^3 + \cdots + n^3 = \left[\frac {n(n+1)} {2}\right]^2 \tag{12} \label{12}&lt;/script&gt;
+
+&lt;p&gt;The assertion holds true for \(n=1\), because,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;A_1 = 1^3 = \left[\frac {1(1+1)} {2}\right]^2 = 1^2 \tag{13} \label{13}&lt;/script&gt;
+
+&lt;p&gt;Let’s assume \(A_r\) is true, i.e.,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;A_r = 1^3 + 2^3 + \cdots + r^3 = \left[\frac {r(r+1)} {2}\right]^2 \tag{14} \label{14}&lt;/script&gt;
+
+&lt;p&gt;Then,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+A_{r+1} = (1^3 + 2^3 + \cdots + r^3 ) + (r+1)^3 &amp;= \left[\frac {r(r+1)} {2}\right]^2 + (r+1)^3 \\
+&amp;= (r+1)^2\frac{r^2 + 4r + 4} {4} \\
+&amp;= (r+1)^2 \frac {(r+2)^2} {2^2} \\
+&amp;= \left[\frac {(r+1)(r+2)} {2}\right]^2
+\label{15} \tag{15}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;which is precisely the assertion \eqref{12} for \(n = r+1\). So, using \eqref{13} and \eqref{15}, mathematical induction proves the assertion.&lt;/p&gt;
+
+&lt;h3 id=&quot;proof-for-bernoullis-inequality&quot;&gt;Proof for Bernoulli’s Inequality&lt;/h3&gt;
+
+&lt;p&gt;The assertion, \(A_n \) states that, for every value of \(n\),&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(1+p)^n \geq 1+np \text{, where } p&gt;-1\tag{16} \label{16}&lt;/script&gt;
+
+&lt;p&gt;The assertion holds true for \(n=1\), because,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(1+p)^1 \geq 1+p \tag{17} \label{17}&lt;/script&gt;
+
+&lt;p&gt;Let’s assume \(A_r\) is true, i.e.,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(1+p)^r \geq 1+rp \tag{18} \label{18}&lt;/script&gt;
+
+&lt;p&gt;Then,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+(1+p)^{r+1} = (1+p)^r \cdot (1+p) &amp;\geq (1+rp)(1+p) \\
+&amp;\geq 1 + rp + p + rp^2 \\
+&amp;\geq 1+(r+1)p \text{, because } rp^2 \gt 0 \\
+\label{19} \tag{19}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;which is precisely the assertion \eqref{16} for \(n = r+1\). So, using \eqref{17} and \eqref{19}, mathematical induction proves the assertion.&lt;/p&gt;
+
+&lt;p&gt;If \(p \lt -1\), then \((1+p)\) is negative and the inequality in \eqref{19} would be reversed. So, the restriction introduced in \eqref{16} is essential.&lt;/p&gt;
+
+&lt;h3 id=&quot;proof-of-binomial-theorem&quot;&gt;Proof of Binomial Theorem&lt;/h3&gt;
+
+&lt;p&gt;The assertion, \(C_i^n \) states that, for every value of \(n\),&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;C_i^n = \frac{n(n-1) \cdots (n-i+1) } {1 \cdot 2 \cdots i} = \frac {n!} {i!(n-i)!} \text{, for } i \in \{0, 1, \cdots, n\} \tag{20} \label{20}&lt;/script&gt;
+
+&lt;p&gt;The assertion holds true for \(n=1\), because,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;C_i^1 = \frac{1!} {i!(1-i)!} = 1 \text{, for } i \in \{0, 1\} \tag{21} \label{21}&lt;/script&gt;
+
+&lt;p&gt;which is exactly the value for \(C_0^1 = C_1^1 = 1\) in Pascal’s Triangle.&lt;/p&gt;
+
+&lt;p&gt;Let’s assume \(C_i^r\) is true, i.e.,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;C_i^r = \frac {r!} {i!(r-i)!} \text{, for } i \in \{0, 1, \cdots, r\} \tag{22} \label{22}&lt;/script&gt;
+
+&lt;p&gt;Then using the relation, \(C_i^{r+1} = C_{i-1}^{r} + C_i^{r} \text{, } C_i^{r+1}\) is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+C_i^{r+1} &amp;= C_{i-1}^{r} + C_i^{r} \\
+&amp;= \frac{r!}{(i-1)!(r - i + 1)!} + \frac{r!}{i!(r-i)!} \\
+&amp;= \frac{r!}{(i-1)!(r-i)!} \left[ \frac{1}{r-i+1} + \frac{1}{i} \right] \\
+&amp;= \frac{r!}{(i-1)!(r-i)!} \left[ \frac{r+1}{i(r-i+1)} \right] \\
+&amp;= \frac{(r+1)!}{(i)!((r+1)-i)!} \\
+\tag{23} \label{23}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;which is precisely the assertion \eqref{20} for \(n = r+1\). So, using \eqref{21} and \eqref{23}, mathematical induction proves the assertion.&lt;/p&gt;
+
+&lt;h3 id=&quot;generalized-mathematical-induction&quot;&gt;Generalized Mathematical Induction&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;If a sequence of statements \(A_s, A_{s+1}, \cdots\) is given where \(s\) is a some positive integer, and if &lt;br /&gt;
+a) For every value \(r \geq s\), the truth of \(A_{r+1}\) will follow from the truth of \(A_r\),&lt;br /&gt;
+b) \(A_s\) is known to be true, &lt;br /&gt;
+then all the statements \(A_s, A_{s+1}, \cdots\) are true; i.e. \(A_n\) is true for all \(n \geq s\)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;proof-for-bernoullis-inequality-strict-version&quot;&gt;Proof for Bernoulli’s Inequality (Strict version)&lt;/h3&gt;
+
+&lt;p&gt;The assertion, \(A_n \) states that, for every value of \(n\),&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(1+p)^n \gt 1+np \text{, for } p&gt;-1 \text{ and } p\ne0 \text{ and } n \geq 2\tag{24} \label{24}&lt;/script&gt;
+
+&lt;p&gt;The assertion holds true for \(n=s=2\), because,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(1+p)^2 = 1 + 2p + p^2 \gt 1+2p \text{, because } p \ne 0 \text{, so } p^2 \gt 0   \tag{25} \label{25}&lt;/script&gt;
+
+&lt;p&gt;Let’s assume \(A_r\) is true, i.e.,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(1+p)^r \gt 1+rp \tag{26} \label{26}&lt;/script&gt;
+
+&lt;p&gt;Then,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+(1+p)^{r+1} = (1+p)^r \cdot (1+p) &amp;\gt (1+rp)(1+p) \\
+&amp;\gt 1 + rp + p + rp^2 \\
+&amp;\gt 1+(r+1)p \text{, because } rp^2 \gt 0 \\
+\label{27} \tag{27}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;which is precisely the assertion \eqref{24} for \(n = r+1\). So, using \eqref{25} and \eqref{27}, mathematical induction proves the assertion.&lt;/p&gt;
+
+&lt;p&gt;If \(p \lt -1\), then \((1+p)\) is negative and the inequality in \eqref{19} would be reversed. So, the restriction introduced in \eqref{16} is essential.&lt;/p&gt;
+
+&lt;h3 id=&quot;principle-of-smallest-integer&quot;&gt;Principle of Smallest Integer&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Every non-empty set \(C\) of positive integers has a smallest number. (Set may be finite or infinite.)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;At first it seems like a trivial principle but it actually does not apply to many sets that are not integers, e.g. the set of positive fractions \(1, {1 \over 2} {1 \over 3} \cdots \) does not contain a smallest number.&lt;/p&gt;
+
+&lt;h3 id=&quot;proof-for-mathematical-induction&quot;&gt;Proof for Mathematical Induction&lt;/h3&gt;
+
+&lt;p&gt;The principle of smallest integer can be used to prove the principle of mathematical induction as a theorem.&lt;/p&gt;
+
+&lt;p&gt;Let us consider any sequence of statements \(A_1, A_2, \cdots \) such that,&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;For any integer \(r\) the truth of \(A_{r+1}\) will follow from that of \(A_r\)&lt;/li&gt;
+  &lt;li&gt;\(A_1\) is known to be true.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;if 1 of the \(A’s\) were false, the set \(C\) of all positive integers \(n\) for which \(A_n\) is false would be non-empty. By the principle of smallest integer, \(C\) would have a smallest integer \(p\), which must be greater than 1 because of condition (2) in the theorem. Hence, \(A_p\) would be false, but \(A_{p-1}\) true, which contradicts condition (1) of the theorem. So, the assumption in the first place, that any one of the \(A’s\) is false is untenable.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Mathematical Induction must be applied very carefully to prove an assertion because, it is often fallacious because of a misleading base case. A popular example of this is “All number are equal fallacy”.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://drive.google.com/open?id=0BxedRvE84NXkSy1sdzJKNDlHZGM&quot; target=&quot;_blank&quot;&gt;What is Mathematics? Second Edition - Chapter I: Natural Numbers&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sat, 28 Oct 2017 00:00:00 +0530</pubDate>
+        <link>https://machinelearningmedium.com/2017/10/28/mathematical-induction/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2017/10/28/mathematical-induction/</guid>
+        
+        <category>mathematics</category>
+        
+        <category>number system</category>
+        
+        <category>what is mathematics</category>
+        
+        <category>theorems</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>What is Number System ?</title>
+        <description>&lt;h3 id=&quot;what-is-mathematics-series&quot;&gt;What is Mathematics Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/2017/10/27/number-system/&quot;&gt;What is Number System ?&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/10/28/mathematical-induction/&quot;&gt;Mathematical Induction&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/11/01/prime-numbers/&quot;&gt;The Mysterious Primes&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;the-natural-numbers&quot;&gt;The Natural Numbers&lt;/h3&gt;
+
+&lt;p&gt;The natural numbers were created by the human mind out of the necessity to count the objects around us. Most basics of mathematics are associated with association of numbers with tangible objects. But advanced mathematics is built on top of the &lt;strong&gt;abstract concept of number system&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;God created natural numbers; everything else is man’s handiwork.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;laws-of-arithmetic&quot;&gt;Laws of Arithmetic&lt;/h3&gt;
+
+&lt;p&gt;Natural numbers have only &lt;strong&gt;two basic operations&lt;/strong&gt;, namely, addition and multiplication. The mathematical theory of the natural numbers or positive integers is known as &lt;strong&gt;arithmetic&lt;/strong&gt;. Arithmetic is based on the fact that operations on numbers are governed by certain laws.&lt;/p&gt;
+
+&lt;p&gt;(a, b, c … symbolically denote integers)&lt;/p&gt;
+
+&lt;p&gt;The fundamental laws of arithmetic are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Commutative&lt;/strong&gt; law, i.e. \(a+b = b+a\) and \(ab = ba\)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Associative&lt;/strong&gt; law, i.e. \(a + (b + c) = (a + b) + c\) and \(a(bc) = (ab)c\)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Distributive&lt;/strong&gt; law, i.e. \(a(b+c) = ab + ac\)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Addition and subtraction are &lt;strong&gt;inverse operations&lt;/strong&gt; because, \((a+d)-d = a\). Similarly, multiplication and division are inverse because \({a \over d} \cdot d = a\). Also, &lt;strong&gt;0 and 1 are the identities of operations addition and multiplication respectively&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;representation-of-integers&quot;&gt;Representation of Integers&lt;/h3&gt;
+
+&lt;p&gt;A number system has a set of &lt;strong&gt;digit symbols and numbers&lt;/strong&gt; where digit symbols are used to denote the larger numbers not available directly in the set of digit symbols. Modern number systems are associated with the place values of individual digits in the number, such as,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;372 = 3 \cdot 10^2 + 7 \cdot 10^1 + 2 \cdot 10^0&lt;/script&gt;
+
+&lt;p&gt;These are called &lt;strong&gt;positional notations&lt;/strong&gt;. Here, a large number can also be represented using the basic symbols from the set of digit symbols. It is useful to have a way of indicating the result in a general form using a uniform logic, i.e. a general method for representing an integer, \(z\) in the decimal system is to express it as follows&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;z = a_n \cdot 10^n + a_{n-1} \cdot 10^{n-1} + \cdots + a_1 \cdot 10 + a_0&lt;/script&gt;
+
+&lt;p&gt;which would be represented by the symbol \(a_na_{n-1}\cdots a_1a_0\)&lt;/p&gt;
+
+&lt;p&gt;Specifically, in case of decimal system the base is 10 as can be seen in the equations above. But, in general, for a number system &lt;strong&gt;any number greater than 1 can serve as the base&lt;/strong&gt; of the system. E.g. a &lt;strong&gt;septimal&lt;/strong&gt; system has base 7 and an integer is expressed as,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;b_n \cdot 7^n + b_{n-1} \cdot 7^{n-1} + \cdots + b_1 \cdot 7 + b_0&lt;/script&gt;
+
+&lt;p&gt;and it would be represented by the symbol \(b_nb_{n-1}\cdots b_1b_0\)&lt;/p&gt;
+
+&lt;p&gt;As a result 109 in decimal system is represented by 214 in septimal system for the reason shown below&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;2 \cdot 7^2 + 1 \cdot 7 + 4 = 109&lt;/script&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;As a general rule, in order to convert from base 10 to base B, perform successive divisions of number z by B; the remainders in reverse order would be the number representation in the system with base B.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Too small a base base has disadvantages (even &lt;strong&gt;a small number like 72 has a lengthy representation 1,001,111 in the dyadic system i.e. the binary system&lt;/strong&gt;), while a large base requires learning many digit symbols, and an extended multiplication table.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The duodecimal system, i.e., choice of base 12 is advocated in many places, because it is exactly divisible by two, three, four, and six. Due to this property, works involving division and fraction are simplified.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Early systems of numerations were not positional in nature, but were based on purely additive principle. E.g. in roman symbolism,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;CXVIII = \text{one hundred} + \text{ten} + \text{five} + \text{one} + \text{one} + \text{one}&lt;/script&gt;
+
+&lt;p&gt;i.e., the symbol \(CXVIII\) represents 118. Same was true about other early number systems like the Egyptian, Hebrew, Greek systems of numeration.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Disadvantage of any purely additive notation is that it requires more and more number of new symbols as the number to be represented gets larger. Also, the computation with additive systems is so difficult to perform, that computation was confined to a few adepts in the ancient times.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The positional system has the property that all numbers, however large or small, can be represented by the use of a small set of different digit symbols. Also, the major advantage lies in the &lt;strong&gt;ease of computation&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;computation-in-other-number-systems&quot;&gt;Computation in Other Number Systems&lt;/h3&gt;
+
+&lt;p&gt;A very curious property of the decimal number system that points to usage of other number systems in the past is the number words used. E.g. the words for 11 and 12 are not constructed as the other teens are, suggesting a linguistic independence from words used for 10. Such peculiarities suggest remnants of use of other bases, notably 12 and 20.&lt;/p&gt;
+
+&lt;p&gt;Words vingt and quartevingt used for 20 and 80 respectively in French suggest a possibility of number with &lt;strong&gt;base 20&lt;/strong&gt;. There are traces of Babylonian astronomers using a number system called &lt;strong&gt;sexagesimal&lt;/strong&gt; (base 60).&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The tables for addition and multiplication change with number system while the rules of arithmetic remain the same.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Below is the &lt;strong&gt;table for addition&lt;/strong&gt; followed by &lt;strong&gt;table for multiplication&lt;/strong&gt; in duodecimal number system. (&lt;strong&gt;10 and 11 in the duodecimal representation below are represented using A and B respectively.&lt;/strong&gt;)&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;+&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;1&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;2&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;3&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;4&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;5&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;6&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;7&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;8&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;9&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;17&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;17&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;17&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;19&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;17&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;19&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1A&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;.&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;1&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;2&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;3&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;4&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;5&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;6&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;7&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;8&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;9&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1A&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;19&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;20&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;23&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;26&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;29&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;20&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;24&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;28&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;30&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;34&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;38&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;21&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;26&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;34&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;39&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;42&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;47&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;20&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;26&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;30&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;36&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;40&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;46&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;50&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;56&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;19&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;24&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;36&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;41&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;48&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;53&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;65&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;20&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;28&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;34&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;40&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;48&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;54&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;60&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;68&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;74&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;23&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;30&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;39&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;46&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;53&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;60&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;69&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;76&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;83&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;26&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;34&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;42&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;50&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;68&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;76&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;84&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;92&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;29&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;38&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;47&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;56&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;65&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;74&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;83&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;92&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;101&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://drive.google.com/open?id=0BxedRvE84NXkSy1sdzJKNDlHZGM&quot; target=&quot;_blank&quot;&gt;What is Mathematics? Second Edition - Chapter I: Natural Numbers&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 27 Oct 2017 00:00:00 +0530</pubDate>
+        <link>https://machinelearningmedium.com/2017/10/27/number-system/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2017/10/27/number-system/</guid>
+        
+        <category>mathematics</category>
+        
+        <category>number system</category>
+        
+        <category>what is mathematics</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Neural Networks: Cost Function and Backpropagation</title>
+        <description>&lt;h3 id=&quot;notation&quot;&gt;Notation&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;\({(x^{(1)}, y^{(1)}), (x^{(2)}, y^{(2)}), \cdots , (x^{(m)}, y^{(m)})}\) are the \(m\) training examples&lt;/li&gt;
+  &lt;li&gt;L is the &lt;strong&gt;total number of the layers&lt;/strong&gt; in the network&lt;/li&gt;
+  &lt;li&gt;\(s_l\) is the &lt;strong&gt;number of units (not counting the bias unit)&lt;/strong&gt; in the layer l&lt;/li&gt;
+  &lt;li&gt;K is the &lt;strong&gt;number of units in the output layer&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2017-10-03-neural-networks-cost-function-and-back-propagation/fig-1-neural-network-notations.png?raw=true&quot; alt=&quot;Neural Network Notations&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;For example in the network shown above,
+    &lt;ul&gt;
+      &lt;li&gt;L = 4&lt;/li&gt;
+      &lt;li&gt;\(s_1 = 3,\, s_2 = 3,\, s_3 = 2,\, s_4 = 2\)&lt;/li&gt;
+      &lt;li&gt;K = 2&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;One vs All method is only needed if number of classes is greater than 2, i.e. if \(K \gt 2\), otherwise only one output unit is sufficient to build the model.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;cost-function-of-neural-networks&quot;&gt;Cost Function of Neural Networks&lt;/h3&gt;
+&lt;p&gt;Cost function of a neural network is a &lt;strong&gt;generalization of the cost function of the logistic regression&lt;/strong&gt;. The &lt;strong&gt;L2-Regularized&lt;/strong&gt; cost function of logistic regression from the post &lt;a href=&quot;/2017/09/15/regularized-logistic-regression/&quot; target=&quot;_blank&quot;&gt;Regularized Logistic Regression&lt;/a&gt;  is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta) = -{1 \over m} \sum_{i=1}^m \left( y^{(i)}\,log(h_\theta(x^{(i)})) + (1-y^{(i)})\,log(1 - h_\theta(x^{(i)})) \right) + {\lambda \over 2m } \sum_{j=1}^n \theta_j^2 \tag{1}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where
+    &lt;ul&gt;
+      &lt;li&gt;\({\lambda \over 2m } \sum_{j=1}^n \theta_j^2\) is the &lt;strong&gt;regularization term&lt;/strong&gt;&lt;/li&gt;
+      &lt;li&gt;\(\lambda\) is the &lt;strong&gt;regularization factor&lt;/strong&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Extending (1) to then neural networks which can have K units in the output layer the cost function is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta) = -{1 \over m} \left[ \sum_{i=1}^m \sum_{k=1}^K y_k^{(i)}\,log(h_\theta(x^{(i)}))_k + (1-y_k^{(i)})\,log(1 - (h_\theta(x^{(i)}))_k) \right] + {\lambda \over 2m } \sum_{l=1}^{L-1} \sum_{i=1}^{s_l} \sum_{j=1}^{s_{l+1}} (\theta_{ji}^{(l)})^2 \tag{1}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where
+    &lt;ul&gt;
+      &lt;li&gt;\(h_\Theta(x) \in \mathbb{R}^K \)&lt;/li&gt;
+      &lt;li&gt;\((h_\theta(x))_i\) is the \(i^{th}\) output&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Here the summation term \(\sum_{k=1}^K\) is to &lt;strong&gt;generalize over the K output units&lt;/strong&gt; of the neural network by calculating the cost function and summing over all the output units in the network. Also following the convention in regularization, the &lt;strong&gt;bias term in skipped from the regularization penalty&lt;/strong&gt; in the cost function defination. Even if one includes the index 0, it would not effect the process in practice.&lt;/p&gt;
+
+&lt;h3 id=&quot;backpropagation-algorithm&quot;&gt;Backpropagation Algorithm&lt;/h3&gt;
+&lt;p&gt;Backpropagation algorithm is based on the &lt;strong&gt;repeated application of the error calculation&lt;/strong&gt; used for gradient descent similar to the regression techniques, and since it is repeatedly applied in the &lt;strong&gt;reverse order starting from output layer and continuing towards input layer&lt;/strong&gt; it is termed as backpropagation.&lt;/p&gt;
+
+&lt;p&gt;For a network with L layers the computation during &lt;strong&gt;foward propagation&lt;/strong&gt;, for an input \((x, y)\) would be as follows,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    a^{(1)} &amp;= x \\
+    z^{(2)} &amp;= \Theta^{(1)}\,a^{(1)} \\
+    a^{(2)} &amp;= g(z^{(2)}) \\
+    &amp; \vdots \\
+    a^{(L-1)} &amp;= g(z^{(L-1)}) \\
+    z^{(L)} &amp;= \Theta^{(L-1)}\,a^{(L-1)} \\
+    a^{(L)} &amp;= h_\Theta(x) = g(z^{(L)})
+  \end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;The \(h_\Theta(x)\) is the prediction. In order to reduce the error between the prediction and the actual value backpropagation is used. Say, \(\delta_j^{(l)}\) is the &lt;strong&gt;error of node j in the layer l&lt;/strong&gt; is associated with the prediction made at that node given by \(a_j^{(l)}\), then backpropagation aims to calculate this error term propating backwards starting from the output unit in the last layer (layer L in the example above).&lt;/p&gt;
+
+&lt;p&gt;So for each output unit in layer L, the error term is given by, \(\delta_j^{(L)} = a_j^{(L)} - y_j\) which can be vectorized and written as,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\delta^{(L)} = a^{(L)} - y&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where \(a^{(L)}\) is \(h_\Theta(x)\).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now the error terms for the previous layers are calculated as follows,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\delta^{(l)} = (\Theta^{(l)})^T\,\delta^{(l+1)} .* g'(z^{(l)})&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where
+    &lt;ul&gt;
+      &lt;li&gt;\(g’(z^{(l)}) = a^{(l)} .* (1 - a^{(l)}) \)&lt;/li&gt;
+      &lt;li&gt;.* is the element-wise multiplication.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;This backward propagation stops at l = 2 because l = 1 correponds to the input layer and no weights needs to be calculated there.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Now the the gradient for the cost function which is needed for the minimization of the cost function is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac {\partial} {\partial \Theta_{ij}^{(l)} } = a_j^{(l)}\, \delta_i^{(l+1)}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where regularization is ignored for the simplicity of expression.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Summarizing&lt;/strong&gt; backpropagation:&lt;/p&gt;
+
+&lt;p&gt;Given training set \({(x^{(1)}, y^{(1)}), \cdots, (x^{(m)}, y^{(m)})}\)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Set \(\Delta_{ij}^{l} = 0\) for all (i, j, l)&lt;/li&gt;
+  &lt;li&gt;For i = 1 to m:
+    &lt;ul&gt;
+      &lt;li&gt;Set \(a^{(1)} = x^{(i)} \)&lt;/li&gt;
+      &lt;li&gt;Perform forward propagation to compute \(a^{(l)}\) for l = 1, …, L&lt;/li&gt;
+      &lt;li&gt;Using \(y^{(i)}\) compute \( \delta^{(L)} = a^{(L)} - y^{(i)} \)&lt;/li&gt;
+      &lt;li&gt;Compute \(\delta^{(L-1)}, \cdots, \delta^{(2)}\) using backpropagation&lt;/li&gt;
+      &lt;li&gt;\(\Delta_{ij}^{(l)} := \Delta_{ij}^{(l)} + a_j^{(l)} \delta_i^{(l+1)} \)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Vectorized implementation of the equation above is given by,&lt;/strong&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta^{(l)} := \Delta^{(l)} + \delta^{(l+1)}\,a^{(l)}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;\(D_{ij}^{(l)} := {1 \over m} \Delta_{ij}^{(l)} + \lambda \, \Theta_{ij}^{(l)} \) if \(j \ne 0\)&lt;/li&gt;
+  &lt;li&gt;\(D_{ij}^{(l)} := {1 \over m} \Delta_{ij}^{(l)} \) if \(j = 0\)&lt;/li&gt;
+  &lt;li&gt;And finally, \( \frac {\partial} {\partial \Theta_{ij}^{(l)} } = D_{ij}^{(l)} \)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Formally, the &lt;strong&gt;\(\delta\) terms are the partial derivatives of the cost function&lt;/strong&gt; given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\delta_j^{(l)} = \frac {\partial} {\partial z_j^{(l)}} cost(t)&lt;/script&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/na28E/cost-function&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Cost Function&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 03 Oct 2017 00:00:00 +0530</pubDate>
+        <link>https://machinelearningmedium.com/2017/10/03/neural-networks-cost-function-and-back-propagation/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2017/10/03/neural-networks-cost-function-and-back-propagation/</guid>
+        
+        <category>machine learning</category>
+        
+        <category>andrew ng</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Neural Networks Intuition</title>
+        <description>&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;Neural networks can be used to build all types of function. This post tries to &lt;strong&gt;map functions of logical operations using the network&lt;/strong&gt;. How the parameters are derived in explained in the later posts.&lt;/p&gt;
+
+&lt;h3 id=&quot;and-gate&quot;&gt;AND Gate&lt;/h3&gt;
+&lt;p&gt;Using a single neuron, it is possible to achieve the approximation of an and gate. The architecture with the parameters can be seen below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2017-09-27-neural-network-intuition/fig-1-and-gate.png?raw=true&quot; alt=&quot;And Implementation&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The hypothesis for the above network is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;h_\theta(x) = g(-30 + 20\,x_1 + 20\,x_2)&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where g is the sigmoid function which &lt;strong&gt;asymptotes at 0 and 1&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The output table for the hypothesis above is given below.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;\(x_1\)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;\(x_2\)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;\(h_\theta(x)\)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;\(g(-30) \approx 0\)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;\(g(-10) \approx 0\)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;\(g(-10) \approx 0\)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;\(g(10) \approx 1\)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The values of \(h_\theta(x)\) is nothing but the expected value of the AND gate.&lt;/p&gt;
+
+&lt;h3 id=&quot;or-gate&quot;&gt;OR Gate&lt;/h3&gt;
+&lt;p&gt;Similarly, using a single neuron, it is possible to achieve the approximation of an or gate. The architecture with the parameters can be seen below. It is same as AND gate but the bias weight is changed.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2017-09-27-neural-network-intuition/fig-2-or-gate.png?raw=true&quot; alt=&quot;Or Implementation&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The hypothesis for the above network is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;h_\theta(x) = g(-10 + 20\,x_1 + 20\,x_2)&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where g is the sigmoid function which &lt;strong&gt;asymptotes at 0 and 1&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The output table for the hypothesis above is given below.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;\(x_1\)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;\(x_2\)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;\(h_\theta(x)\)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;\(g(-10) \approx 0\)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;\(g(10) \approx 1\)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;\(g(10) \approx 1\)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;\(g(30) \approx 1\)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The values of \(h_\theta(x)\) is nothing but the expected value of the OR gate.&lt;/p&gt;
+
+&lt;h3 id=&quot;not-gate&quot;&gt;NOT Gate&lt;/h3&gt;
+&lt;p&gt;Unlike the previous two examples, NOT gate is a unary operator, but still simple weights can give easy implementation of the NOT gate. The architecture and the parameters are shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2017-09-27-neural-network-intuition/fig-3-not-gate.png?raw=true&quot; alt=&quot;Not Implementation&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The hypothesis for the above network is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;h_\theta(x) = g(10 - 20\,x_1)&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where g is the sigmoid function which &lt;strong&gt;asymptotes at 0 and 1&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The output table for the hypothesis above is given below.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;\(x_1\)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;\(h_\theta(x)\)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;\(g(10) \approx 1\)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;\(g(-10) \approx 0\)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The values of \(h_\theta(x)\) is nothing but the expected value of the NOT gate.&lt;/p&gt;
+
+&lt;h3 id=&quot;not-x_1-and-not-x_2&quot;&gt;(NOT \(x_1\)) AND (NOT \(x_2\))&lt;/h3&gt;
+&lt;p&gt;Unlike the previous examples, this operation does not look straight forward, but actually it is. Here is an architecture implementation of the above gate.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2017-09-27-neural-network-intuition/fig-4-not-x1-and-not-x2.png?raw=true&quot; alt=&quot;Not x1 and Not x2 Implementation&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The hypothesis for the above network is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;h_\theta(x) = g(10 - 20\,x_1 - 20\,x_2)&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where g is the sigmoid function which &lt;strong&gt;asymptotes at 0 and 1&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The output table for the hypothesis above is given below.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;\(x_1\)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;\(x_2\)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;\(h_\theta(x)\)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;\(g(10) \approx 1\)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;\(g(-10) \approx 0\)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;\(g(-10) \approx 0\)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;\(g(-30) \approx 0\)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The values of \(h_\theta(x)\) is nothing but the expected value of the (NOT \(x_1\)) AND (NOT \(x_2\)) operation.&lt;/p&gt;
+
+&lt;h3 id=&quot;perceptron-limitation&quot;&gt;Perceptron Limitation&lt;/h3&gt;
+&lt;p&gt;All the examples untill this one were linearly seperable and hence were solved using a single neuron. But and XOR Gate is not linearly seperable as was the case with AND and OR gates and this can be clearly seen in the plot below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2017-09-27-neural-network-intuition/fig-5-linearly-seperable.png?raw=true&quot; alt=&quot;Linearly Seperable&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It is evident that there is no single straight line that can seperate the two classes in plot (c) and hence termed as &lt;strong&gt;not linearly seperable&lt;/strong&gt;. This is a major drawback of &lt;strong&gt;perceptron (single layer neural networks)&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;There is a simple &lt;strong&gt;proof&lt;/strong&gt; for concluding that the XOR is not linearly seperable. Say, perceptron were capable of separating the two classes, then it would mean that there exists a set of weights (or parameters), \(\theta_0,\, \theta_1,\,\theta_2\) such that the hypothesis is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;h_\theta(x) = g(\theta_0\,x_0 + \theta_1\,x_1 + \theta_2\,x_2)&lt;/script&gt;
+
+&lt;p&gt;Then the above hypothesis should satisfy the following truth table,&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;\(x_1\)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;\(x_2\)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;\(x_1\,XOR\,x_2\)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Substituting and equating to 0, the hypothesis, following inequalities are generated that would determine the decision boundary.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    \theta_0 \cdot 1 + 0 \cdot x_1 + 0 \cdot x_2 &amp;\lt 0 \\
+    \theta_0 \cdot 1 + 0 \cdot x_1 + 1 \cdot x_2 &amp;\gt 0 \\
+    \theta_0 \cdot 1 + 1 \cdot x_1 + 0 \cdot x_2 &amp;\gt 0 \\
+    \theta_0 \cdot 1 + 1 \cdot x_1 + 1 \cdot x_2 &amp;\lt 0 \\
+  \end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Substituting \(b = -\theta_0\), above inequalities can be written as,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    b &amp;\gt 0 \\
+    x_2 &amp;\gt b \\
+    x_1 &amp;\gt b \\
+    x_1 + x_2 &amp;\lt b \\
+  \end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;It can be seen that the first three inequalities directly contradict the fourth one. Which means that the very first assumption made that there exist such parameters \(\theta_0,\, \theta_1,\,\theta_2\) was incorrect. Hence, &lt;strong&gt;the XOR gate is not linearly seperable&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;This is where the utility and finesse of multi-layer neural network in deriving intricate features from the input features can be seen in action.&lt;/p&gt;
+
+&lt;h3 id=&quot;xnor-gate&quot;&gt;XNOR Gate&lt;/h3&gt;
+&lt;p&gt;For simplicity, let’s consider a XNOR gate which is nothing but the negation of an XOR gate. So, it would not be wrong to say that if XNOR gate is achieved, XOR gate is not very far. Consider the following neural network with one hidden layer and the given weights.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2017-09-27-neural-network-intuition/fig-6-xnor-gate.png?raw=true&quot; alt=&quot;XNOR&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here if weights are seen carefully, \(a_1^{(2)}\) is nothing but the AND gate and \(a_2^{(2)}\) is nothing but (NOT \(x_1\)) AND (NOT \(x_2\)). Similarly the output neuron is nothing but the OR gate. It calculates the following result table,&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;\(x_1\)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;\(x_2\)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;\(a_1^{(2)}\)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;\(a_2^{(2)}\)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;\(h_\theta(x)\)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The values of \(h_\theta(x)\) is nothing but the expected value of the XNOR operation.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;This gives the intuition that the hidden layers are calculating a more complex input which inturn helps to turn the problem into a linearly seperable one using the transformations. This is the main reason the neural networks are fairly powerful classifiers because as the depth (or number of hidden layers) of the neural network increases it can derive more and more complex features for the final layer.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/rBZmG/examples-and-intuitions-i&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Examples and Intutions I&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
+&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/solUx/examples-and-intuitions-ii&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Examples and Intutions II&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 27 Sep 2017 00:00:00 +0530</pubDate>
+        <link>https://machinelearningmedium.com/2017/09/27/neural-network-intuition/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2017/09/27/neural-network-intuition/</guid>
+        
+        <category>machine learning</category>
+        
+        <category>andrew ng</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Neural Networks Theory</title>
+        <description>&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;Neural networks were developed to &lt;strong&gt;mimic the way neurons in a brain work&lt;/strong&gt;. Typically, a neuron has input connections and output connections. So basically, &lt;strong&gt;neuron is a computational unit&lt;/strong&gt; which takes a set of inputs and produces output. So the basic functionality of neurons is tried to be replicated in these computational units. For example, neurons in brain interact with each other using electrical signals and are selectively activated based on certain parameters. This behaviour is transferred to a unit in neural networks using &lt;strong&gt;activation function&lt;/strong&gt; which would be explained later in the post.&lt;/p&gt;
+
+&lt;h3 id=&quot;neuron-model-logistic-unit&quot;&gt;Neuron Model: Logistic Unit&lt;/h3&gt;
+&lt;p&gt;Below is the representation of a basic &lt;strong&gt;logistic unit neuron model&lt;/strong&gt;,&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2017-09-21-neural-networks/fig-1-logistic-unit.png?raw=true&quot; alt=&quot;Logistic Unit&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here, \(x_0, \cdots, x_3\) are the input units connected to the neuron and can be considered &lt;strong&gt;similar to dendrites&lt;/strong&gt; getting signals from other neurons. \(h_\theta(x)\) is the activation function which basically decides whether or not should the neuron get activated or excited. The term &lt;strong&gt;\(x_0 = 1\), also called bias unit, plays an important role in the decision made for excitation of neuron.&lt;/strong&gt; In case of a logistic unit the activation function is a logistic function or sigmoid function i.e. the &lt;strong&gt;neuron has a sigmoid (logistic) activation function&lt;/strong&gt;. Sigmoid function is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;h_\theta(x) = \frac {1} {1 + e^{-x}} \tag{1}&lt;/script&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Parameters of the model, \(\theta_0, \cdots, \theta_n\) are also sometimes called weights of the model and represented by \(w_1, \cdots, w_n\).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;neural-network&quot;&gt;Neural Network&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;A group of these neuron units together forms a neural network&lt;/strong&gt;. Below is a representation of neural network,&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2017-09-21-neural-networks/fig-2-neural-network.png?raw=true&quot; alt=&quot;Neural Network&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where
+    &lt;ul&gt;
+      &lt;li&gt;network has 3 layers&lt;/li&gt;
+      &lt;li&gt;layer 1 is called &lt;strong&gt;input layer&lt;/strong&gt;&lt;/li&gt;
+      &lt;li&gt;layer 3 is called &lt;strong&gt;output layer&lt;/strong&gt;&lt;/li&gt;
+      &lt;li&gt;remaining layers are called &lt;strong&gt;hidden layers&lt;/strong&gt;. In this case there is only one hidden layer, but it is &lt;strong&gt;possible to have multiple hidden layers&lt;/strong&gt;&lt;/li&gt;
+      &lt;li&gt;\(x_0\) and \(a_0^{(2)}\) are the bias terms and equal 1 always. They are &lt;strong&gt;generally not counted when the number of units in a layer are calculated&lt;/strong&gt;. So, layer 1 and layer 2 have 3 units each.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Notations
+    &lt;ul&gt;
+      &lt;li&gt;\(a_i^{(j)}\) is the activation of unit i in layer j&lt;/li&gt;
+      &lt;li&gt;\(\Theta^{(j)}\) is the matrix of weights controlling function mapping from layer j to layer j+1.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So, the network diagram above depicts the following computations,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    a_1^{(2)} &amp;= g(\Theta_{10}^{(1)}\,x_0 + \Theta_{11}^{(1)}\,x_1 + \Theta_{12}^{(1)}\,x_2 + \Theta_{13}^{(1)}\,x_3) \\
+    a_2^{(2)} &amp;= g(\Theta_{20}^{(1)}\,x_0 + \Theta_{21}^{(1)}\,x_1 + \Theta_{22}^{(1)}\,x_2 + \Theta_{23}^{(1)}\,x_3) \\
+    a_3^{(2)} &amp;= g(\Theta_{30}^{(1)}\,x_0 + \Theta_{31}^{(1)}\,x_1 + \Theta_{32}^{(1)}\,x_2 + \Theta_{33}^{(1)}\,x_3) \\
+  \end{align}
+  \tag{2} %]]&gt;&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;h_\Theta(x) = a_1^{(3)} = g(\Theta_{10}^{(2)}\,a_0^{(2)} + \Theta_{11}^{(2)}\,a_1^{(2)} + \Theta_{12}^{(2)}\,a_2^{(2)} + \Theta_{13}^{(2)}\,a_3^{(2)}) \tag{3}&lt;/script&gt;
+
+&lt;p&gt;From the equation above one can generalize, &lt;strong&gt;if a network has \(s_j\) units in layer j and \(s_{j+1}\) units in layer j+1, then \(\Theta^{(j)}\) is a matrix of dimension \((s_{j+1} * (s_j + 1))\)&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;vectorization-of-network-computation&quot;&gt;Vectorization of Network Computation&lt;/h3&gt;
+
+&lt;p&gt;Consider (2) can be written as,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    a_1^{(2)} &amp;= g(z_1^{(2)}) \\
+    a_2^{(2)} &amp;= g(z_2^{(2)}) \\
+    a_3^{(2)} &amp;= g(z_3^{(2)}) \\
+  \end{align}
+  \tag{4} %]]&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where \(z_i^{(j)} = \Theta_{i0}^{(j-1)}\,x_0 + \Theta_{i1}^{(j-1)}\,x_1 + \Theta_{i2}^{(j-1)}\,x_2 + \Theta_{i3}^{(j-1)}\,x_3\)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Given \(x=\begin{bmatrix} x_0 \\ x_1 \\ \vdots \\ x_n\end{bmatrix}\) and \(z^{(j)}=\begin{bmatrix} z_1^{(j)} \\ \vdots \\ z_n^{(j)} \end{bmatrix}\), then computation for \(z^{(j)}\) can be vectorized as follows,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    z^{(j)} &amp;= \Theta^{(j-1)}\,a^{(j-1)}\\
+    a^{(j)} &amp;= g(z^{(j)})
+  \end{align}
+  \tag{5} %]]&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where
+    &lt;ul&gt;
+      &lt;li&gt;\(a^{(1)} = x\)&lt;/li&gt;
+      &lt;li&gt;\(\Theta^{(j-1)}\) is a matrix of dimensions \((s_j * (s_{j-1}+1))\)&lt;/li&gt;
+      &lt;li&gt;\(s_j\) is number of activation nodes&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;After (5), bias unit, \(a_0^{(j)} = 1\) is added to the activation vector of layer j and then the process repeats to get activation for the next layer, i.e. (3) is written as,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    z^{(j+1)} &amp;= \Theta^{(j)}\,a^{(j)}\\
+    h_\Theta(x) &amp;= a^{(j+1)} = g(z^{(j+1)})
+  \end{align}
+  \tag{6} %]]&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where \(\Theta^{(j)}\) is a matrix of dimensions \((s_{j+1} * (s_j + 1)) \)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Process of calculation of activations cascading across layers is called Forward Propagation.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;nueral-network-and-logistic-regression&quot;&gt;Nueral Network and Logistic Regression&lt;/h3&gt;
+
+&lt;p&gt;If one looks closely at the neural network diagram above, it can be easily seen that if one removes the layer 1, the schema looks same as a logistic regression. It is infact a logistic regression model if the hidden layer is the direct features (input layer) fed to the neuron because the activation function of the neuron is logistic (sigmoid) function. So, effectively the neural network shown above is a logistic regression where the &lt;strong&gt;features for classification are learnt by the hidden layer and not fed manually by human intervention&lt;/strong&gt;. Each feature in hidden layer is mapped from the input layer. Because of this architecture there is a chance of learning much better features than started with or one can make using the higher order polynomial terms and hence there is a probability of reaching better hypotheses with neural networks.&lt;/p&gt;
+
+&lt;h3 id=&quot;architecture-of-neural-network&quot;&gt;Architecture of Neural Network&lt;/h3&gt;
+&lt;p&gt;It is possible to have different kinds of architecture for the neural network. By architecture, it means to have different schema, i.e. &lt;strong&gt;number of neurons&lt;/strong&gt; per layer can vary, &lt;strong&gt;number of layers&lt;/strong&gt; used can vary, the &lt;strong&gt;way the neurons are connected to each other&lt;/strong&gt; can vary and similarly various other variations are possible in terms of &lt;strong&gt;optimization parameters, activation&lt;/strong&gt; etc. When then number of hidden layers is more than one, they are known as &lt;strong&gt;deep neural networks&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/ka3jK/model-representation-i&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Model Representation I&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
+&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/Hw3VK/model-representation-ii&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Model Representation II&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 21 Sep 2017 00:00:00 +0530</pubDate>
+        <link>https://machinelearningmedium.com/2017/09/21/neural-networks/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2017/09/21/neural-networks/</guid>
+        
+        <category>machine learning</category>
+        
+        <category>andrew ng</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Non-linear Hypotheses</title>
+        <description>&lt;h3 id=&quot;drawbacks-of-logistic-regression&quot;&gt;Drawbacks of Logistic Regression&lt;/h3&gt;
+&lt;p&gt;Consider a highly &lt;strong&gt;non-linear classification&lt;/strong&gt; task, say something similar to the one shown in the plot below. In order to achieve a decision boundary like the one plotted, one needs to introduce &lt;strong&gt;non-linear features&lt;/strong&gt; in the form of quadratic and other higher order terms, similar to the equation below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2017-09-20-non-linear-hypotheses/fig-1-non-linear-classification.png?raw=true&quot; alt=&quot;Non-linear Classification&quot; /&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;h(\theta) = g(\theta_0 + \theta_1\,x_1 + \theta_2\,x_2 + \theta_3\,x_1\,x_2 + \theta_4\,x_1^2\,x_2 + \theta_5\,x_1^3\,x_2 + \cdots)&lt;/script&gt;
+
+&lt;p&gt;As the number of features increase then &lt;strong&gt;number of terms in the hypotheses would also increase exponentially&lt;/strong&gt; to get a good fit which would have &lt;strong&gt;high probability of overfitting&lt;/strong&gt; the data. Hence, when the number of features is really high and the decision boundary is complex, logistic regression would not generalize the solution very well by leveraging the power of polynomial terms. So for highly complex tasks like the ones where one needs to classify objects from images, logistic regression would not perform well.&lt;/p&gt;
+
+&lt;p&gt;For example, for images of size 100 * 100 pixels if one uses all quadratic features, there would be around 50 million parameter values to learn which is computationally very expensive task and still not a guarantee of good decision boundary.&lt;/p&gt;
+
+&lt;p&gt;This is where &lt;strong&gt;Neural Networks&lt;/strong&gt; step in to save the day.&lt;/p&gt;
+
+&lt;h3 id=&quot;neural-networks&quot;&gt;Neural Networks&lt;/h3&gt;
+&lt;p&gt;They are class of &lt;strong&gt;very powerful machine learning classifiers&lt;/strong&gt; that are capable of fitting almost any hypotheses and are &lt;strong&gt;motivated by the way a brain functions&lt;/strong&gt;. Even though the concepts of neural networks were well developed by the 80s, they came into popularity fairly recently because of the advances in the &lt;strong&gt;compute power of machines using multiple cores and GPUs&lt;/strong&gt;. It is mainly because neural networks are a class of very &lt;strong&gt;computationally expensive algorithms&lt;/strong&gt; and earlier systems were just not fast enough to get good results in a feasible time-frame.&lt;/p&gt;
+
+&lt;h3 id=&quot;one-learning-algorithm-hypothesis&quot;&gt;One Learning Algorithm Hypothesis&lt;/h3&gt;
+&lt;p&gt;This hypothesis puts light on the fact that even though human brain learns a variety of tasks involving visual, vocal, or audio inputs, it does not learn them using different algorithms. It has been found that if the optic nerve is re-routed to the auditory cortex (responsible for decoding audio), it would learn to use the input and work with visual input as well i.e. &lt;strong&gt;Auditory cortex learns to see.&lt;/strong&gt; So, extending the result of such experiments suggesting that a single tissue in brain is capable of performing different tasks like analyse visuals, audio, touch etc, it is posited that there must be &lt;strong&gt;one algorithm that can approximate any learning task similar to the way brain learns&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/OAOhO/non-linear-hypotheses&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Non-Linear Hypotheses&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
+&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/IPmzw/neurons-and-the-brain&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Neurons and the Brain&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 20 Sep 2017 00:00:00 +0530</pubDate>
+        <link>https://machinelearningmedium.com/2017/09/20/non-linear-hypotheses/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2017/09/20/non-linear-hypotheses/</guid>
+        
+        <category>machine learning</category>
+        
+        <category>andrew ng</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Regularized Logistic Regression</title>
+        <description>&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;The intuition and implementation of logistic regression is implemented in &lt;a href=&quot;/2017/08/31/classification-and-representation/&quot; target=&quot;_blank&quot;&gt;Classifiction and Logistic Regression&lt;/a&gt; and &lt;a href=&quot;/2017/09/02/logistic-regression-model/&quot; target=&quot;_blank&quot;&gt;Logistic Regression Model&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Similar to the linear regression, even logistic regression is prone to overfitting if there are large number of features. If the decision boundary is overfit, the shape might be highly contorted to fit only the training data while failing to generalise for the unseen data.&lt;/p&gt;
+
+&lt;p&gt;So, the cost function of the logistic regression is updated to penalize high values of the parameters and is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta) = -{1 \over m} \sum_{i=1}^m \left( y^{(i)}\,log(h_\theta(x^{(i)}) + (1-y^{(i)})\,log(1 - h_\theta(x^{(i)})) \right) + {\lambda \over 2m } \sum_{j=1}^n \theta_j^2 \tag{1}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where
+    &lt;ul&gt;
+      &lt;li&gt;\({\lambda \over 2m } \sum_{j=1}^n \theta_j^2\) is the &lt;strong&gt;regularization term&lt;/strong&gt;&lt;/li&gt;
+      &lt;li&gt;\(\lambda\) is the &lt;strong&gt;regularization factor&lt;/strong&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;np&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matmul&lt;/span&gt;
+
+&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+X is the design matrix
+y is the target vector
+theta is the parameter vector
+lamda is the regularization parameter
+&quot;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sigmoid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;power&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+hypothesis function
+&quot;&quot;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sigmoid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+regularized cost function
+&quot;&quot;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lamda&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lamda&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; \
+                          &lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; \
+                &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lamda&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; 
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; \
+                     &lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;regularization-for-gradient-descent&quot;&gt;Regularization for Gradient Descent&lt;/h3&gt;
+
+&lt;p&gt;Previously, the &lt;strong&gt;gradient descent for logistic regression without regularization&lt;/strong&gt; was given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align}
+    \text{repeat until convergence}
+    \begin{cases}
+      \theta_j := \theta_j - \alpha {1 \over m} \sum_{i=1}^m \left(h(x^{(i)}) - y^{(i)} \right) x_j^{(i)}
+    \end{cases}
+  \end{align}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where \(j \in \{0, 1, \cdots, n\} \)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;But since the equation for cost function has changed in (1) to include the regularization term, there will be a &lt;strong&gt;change in the derivative of cost function&lt;/strong&gt; that was plugged in the gradient descent algorithm,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    \frac {\partial} {\partial \theta_j} J(\theta) &amp;= \frac {\partial} {\partial \theta_j} \left[-{1 \over m} \sum_{i=1}^m \left( y^{(i)}\,log(h_\theta(x^{(i)}) + (1-y^{(i)})\,log(1 - h_\theta(x^{(i)})) \right) + {\lambda \over 2m } \sum_{j=1}^n \theta_j^2 \right] \\
+    &amp;= {1 \over m} \sum_{i=1}^m \left( h_\theta(x^{(i)}) - y^{(i)} \right) x_j^{(i)} + \frac {\lambda} {m} \theta_j \\
+  \end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Because the first term of cost fuction remains the same, so does the first term of the derivative. So taking &lt;strong&gt;derivative of second term&lt;/strong&gt; gives \(\frac {\lambda} {m} \theta_j\) as seen above.&lt;/p&gt;
+
+&lt;p&gt;So, (2) can be updated as,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    \text{repeat until convergence}
+    \begin{cases}
+      \theta_0 &amp;:= \theta_0 - \alpha \left[ {1 \over m} \sum_{i=1}^m \left( h_\theta(x^{(i)}) - y^{(i)} \right) x_0^{(i)} \right] \\
+      \theta_j &amp;:= \theta_j - \alpha \left[ {1 \over m} \sum_{i=1}^m \left( h_\theta(x^{(i)}) - y^{(i)} \right) x_j^{(i)} + \frac {\lambda} {m} \theta_j \right] \\
+    \end{cases}
+  \end{align} %]]&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where \(j \in \{1, 2, \cdots, n\} \) and h is the &lt;strong&gt;sigmoid function&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It can be noticed that, &lt;strong&gt;for case j=0, there is no regularization term&lt;/strong&gt; included which is consistent with the convention followed for 
+regularization.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+regularized cost gradient
+&quot;&quot;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;j_prime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lamda&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lamda&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lamda&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt; 
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; 
+
+&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+Simultaneous update
+&quot;&quot;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update_theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lamda&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alpha&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j_prime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lamda&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Link to &lt;a href=&quot;https://github.com/shams-sam/logic-lab/blob/master/CourseraMachineLearningAndrewNg/LogisticRegressionHigherOrder.ipynb&quot; target=&quot;_blank&quot;&gt;Rough Working Code&lt;/a&gt;. Change the value of lamda in the code to get different decision boundaries for the &lt;a href=&quot;https://github.com/shams-sam/logic-lab/blob/master/CourseraMachineLearningAndrewNg/logistic_regression_data_2.csv&quot; target=&quot;_blank&quot;&gt;data&lt;/a&gt; as shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\assets\2017-09-15-regularized-logistic-regression\fig-1-regularization.png?raw=true&quot; alt=&quot;Regularization with \(\lambda = 0.01\)&quot; /&gt;
+&lt;img src=&quot;\assets\2017-09-15-regularized-logistic-regression\fig-2-regularization.png?raw=true&quot; alt=&quot;Regularization with \(\lambda = 0.1\)&quot; /&gt;
+&lt;img src=&quot;\assets\2017-09-15-regularized-logistic-regression\fig-3-regularization.png?raw=true&quot; alt=&quot;Regularization with \(\lambda = 1\)&quot; /&gt;
+&lt;img src=&quot;\assets\2017-09-15-regularized-logistic-regression\fig-4-regularization.png?raw=true&quot; alt=&quot;Regularization with \(\lambda = 10\)&quot; /&gt;
+&lt;img src=&quot;\assets\2017-09-15-regularized-logistic-regression\fig-5-regularization.png?raw=true&quot; alt=&quot;Regularization with \(\lambda = 100\)&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/4BHEy/regularized-logistic-regression&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Logistic Regression Model&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 15 Sep 2017 00:00:00 +0530</pubDate>
+        <link>https://machinelearningmedium.com/2017/09/15/regularized-logistic-regression/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2017/09/15/regularized-logistic-regression/</guid>
+        
+        <category>machine learning</category>
+        
+        <category>andrew ng</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Basics of Language Model</title>
+        <description>&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;Given the &lt;strong&gt;finite set of all the words&lt;/strong&gt; in a language, \(\nu\), a sentence in the language is the &lt;strong&gt;sequence of words&lt;/strong&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;x_1\,x_2\,\cdots\,x_n&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where
+    &lt;ul&gt;
+      &lt;li&gt;\(n \ge 1\)&lt;/li&gt;
+      &lt;li&gt;\(x_1 \cdots x_{n-1} \in \nu\)&lt;/li&gt;
+      &lt;li&gt;\(x_n\) is a special symbol STOP \(\require{cancel}\cancel{\in} \nu \)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Set of all the words in a language are assumed to be finite.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Let \(\nu^{\dagger}\) be the &lt;strong&gt;infinite set of all sentences&lt;/strong&gt; with the vocabulary \(\nu\).&lt;/p&gt;
+
+&lt;p&gt;A &lt;strong&gt;language model&lt;/strong&gt; consists of a finite set \(\nu\) as a function \(p(x_1, x_2, \cdots, x_n)\), such that:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;For any \(⟨ x_1 \cdots x_n ⟩ \in  \nu^\dagger, \, p(x_1, x_2, \cdots, x_n) \ge 0\)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;\(\sum_{⟨ x_1 \cdots x_n ⟩ \in  \nu^\dagger} p(x_1, x_2, \cdots, x_n) = 1\)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So, \(p(x_1, x_2, \cdots, x_n)\) is basically a &lt;strong&gt;probability distribution&lt;/strong&gt; over the sentences \(\nu^\dagger\).&lt;/p&gt;
+
+&lt;h3 id=&quot;applications-of-language-modeling&quot;&gt;Applications of Language Modeling&lt;/h3&gt;
+&lt;p&gt;A distribution of \(p(x_1 \cdots x_n)\) signifies how probable a sentence is in a language. Such a distribution can prove useful in &lt;strong&gt;speech recognition&lt;/strong&gt; or &lt;strong&gt;machine translation&lt;/strong&gt;. Candidates generated by these algorithms can be run against the language model to check how probable the sentences are.&lt;/p&gt;
+
+&lt;h3 id=&quot;frequency-based-modeling&quot;&gt;Frequency Based Modeling&lt;/h3&gt;
+&lt;p&gt;Frequency based modeling is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;p(x_1 \cdots x_n) = \frac {c(x_1 \cdots x_n)} {N}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where
+    &lt;ul&gt;
+      &lt;li&gt;\(c(x_1 \cdots x_n)\) is the number of times \(x_1 \cdots x_n\) occurs in the training corpus&lt;/li&gt;
+      &lt;li&gt;N is the total number of sentences in the corpus.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;One major drawback of such a model is that it would &lt;strong&gt;assign probability 0 to any sentence not seen in the training corpus&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;markov-models-for-fixed-length-sequences&quot;&gt;Markov Models for Fixed Length Sequences&lt;/h3&gt;
+&lt;p&gt;Consider a sequence of random variables, \(X_1, X_2, \cdots, X_n\), where each random variable can take any value in a finite set \(\nu\). &lt;strong&gt;n is assumed to be a fixed number.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Language model aims to find the probability of \(x_1 \cdots x_n\), where \(n\ge1\) and \(x_i \in \nu\) for \(i = 1 \cdots n\), i.e. to model the join probability,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P(X_1 = x_1, X_2 = x_2, \cdots , X_n = x_n)&lt;/script&gt;
+
+&lt;p&gt;If n is a fixed number there are \(|\nu|^n\) possible sequences of the form \(x_1 \cdots x_n\), which makes it impossible to list all the possible sequences for a large value of n and \(|\nu|\). This is where markov models help to build a more compact model.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;First-Order Markov Process&lt;/strong&gt; make the assumption that identity of an element in a sequence depends only on the identity of previous element in the sequence, i.e. \(X_i\) is &lt;strong&gt;conditionally independent&lt;/strong&gt; of \( X_1 \cdots X_{i-2} \), given the value of \(X_{i-1}\).&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    P(X_1 = x_1, \cdots , X_n = x_n) &amp;= P(X_1 = x_1) \prod_{i=2}^n P(X_i = x_i | X_1=x_1 \cdots X_{i-1}=x_{i-1}) \\
+    &amp;= P(X_1 = x_1) \prod_{i=2}^n P(X_i=x_i|X_{i-1} = x_{i-1})
+  \end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;The first step of the equation above is &lt;strong&gt;exact&lt;/strong&gt; using the chain rule of probability. The second step is a result of &lt;strong&gt;first-order markov model assumption&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Similarly, &lt;strong&gt;second-order Markov models&lt;/strong&gt; assume that identity of an element in a sequence depends only on the identity of previous two elements in the sequence, i.e. \(X_i\) is &lt;strong&gt;conditionally independent&lt;/strong&gt; of \(X_1 \cdots X_{i-3}\), given the value of \(X_{i-1}\) and \(X_{i-2}\).&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    P(X_1 = x_1, \cdots , X_n = x_n) &amp;= \prod_{i=1}^n P(X_i = x_i | X_1=x_1 \cdots X_{i-1}=x_{i-1}) \\
+    &amp;= \prod_{i=1}^n P(X_i=x_i|X_{i-2} = x_{i-2}, X_{i-1} = x_{i-1})
+  \end{align} %]]&gt;&lt;/script&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;It is assumed that \(x_0,\, x_{-1} = *\), where  * is the special start symbol.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;markov-sequences-for-variable-length-sentences&quot;&gt;Markov Sequences for Variable-length Sentences&lt;/h3&gt;
+&lt;p&gt;The value n, assumed to be fixed number in previous section, is considered to be a random variable itself and the nth word is always equal to the special symbol STOP.&lt;/p&gt;
+
+&lt;p&gt;Using the &lt;strong&gt;second-order markov assumption&lt;/strong&gt;,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P(X_1 = x_1, \cdots , X_n = x_n) = \prod_{i=1}^n P(X_i=x_i|X_{i-2} = x_{i-2}, X_{i-1} = x_{i-1})&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where
+    &lt;ul&gt;
+      &lt;li&gt;\(n \ge 1\)&lt;/li&gt;
+      &lt;li&gt;\(x_n =\) STOP&lt;/li&gt;
+      &lt;li&gt;\(x_i \in \nu\) for \(i=1 \cdots (n-1)\)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Process of generating a sequence using the above distribution would be as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Initialize \(i=1\), and \(x_0, x_{-1} = *\)&lt;/li&gt;
+  &lt;li&gt;Generate \(x_i\) from the distribution,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P(X_i=x_i|X_{i-2} = x_{i-2}, X_{i-1} = x_{i-1})&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If \(x_i = \) STOP then return the sequence \(x_1 \cdots x_i\), else set i = i+1 and repeat previous step.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;trigram-language-models&quot;&gt;Trigram Language Models&lt;/h3&gt;
+&lt;p&gt;Trigram language models are direct application of second-order markov models to the language modeling problem. Each sentence is modeled as a sequence of n random variables, \(X_1, \cdots, X_n\) where n is itself a random variable.&lt;/p&gt;
+
+&lt;p&gt;A trigram model consists of finite set \(\nu\), and a parameter,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;q(w|u,v)&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where
+    &lt;ul&gt;
+      &lt;li&gt;u, v, w is a &lt;strong&gt;trigram&lt;/strong&gt;&lt;/li&gt;
+      &lt;li&gt;\(w \in \nu \cup \{STOP\}\)&lt;/li&gt;
+      &lt;li&gt;\(u, v \in \nu \cup \{*\}\)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The value of \(q(w| u, v)\) can be interpreted as the &lt;strong&gt;probability of seeing the word w immediately after bigram u, v.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;So, for any sequence \(x_1 \cdots x_n\) where \(x_i \in \nu\) for \(i = 1 \cdots (n-1)\) and \(x_n = \) STOP, the probability of the sentence under trigram language model is&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;p(x_1 \cdots x_n) = \prod_{i=1}^n q(x_i|x_{i-2}, x_{i-1}) \tag{1}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where \(x_0 = x_{-1} = *\)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Trigram assumption: Each word depends on the previous two.&lt;/strong&gt; This is essentially the second-order markov assumption used over sentences.&lt;/p&gt;
+
+&lt;p&gt;The only step remaining in the trigram language model is the &lt;strong&gt;estimation of language parameters&lt;/strong&gt;, i.e., \(q(w|u,v)\). Since the total number of words are \(| \nu |\) the total number of possible parameters would be \(| \nu |^3\). It is a very big number and hence needs some kind of &lt;strong&gt;indirect estimation process&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;maximum-likelyhood-estimates&quot;&gt;Maximum Likelyhood Estimates&lt;/h3&gt;
+&lt;p&gt;This is the most generic solution to the estimation problem shown above.&lt;/p&gt;
+
+&lt;p&gt;For any w, u, v,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;q(w|u,v) = \frac {c(u,v,w)} {c(u, v)}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where
+    &lt;ul&gt;
+      &lt;li&gt;c(u,v,w) is the number of times the trigram is seen in corpus&lt;/li&gt;
+      &lt;li&gt;c(u, v) is the number of times the bigram is seen in the corpus&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Many of the frequencies c(u,v,w) and c(u,v) would be 0. This would effect the estimation and present the following flaws:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;\(q(w|u,v) = 0\) because c(u,v,w) is 0 which would underestimate many trigram probabilities which is unreasonable&lt;/li&gt;
+  &lt;li&gt;If the denominator is 0, then \(q(w|u,v)\) would be undefined.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;perplexity&quot;&gt;Perplexity&lt;/h3&gt;
+&lt;p&gt;It is one of the &lt;strong&gt;evaluation metrics for the language models&lt;/strong&gt; and is calculated on a held-out data after the model is trained on some corpus. The &lt;strong&gt;held-out data is not used for parameter estimation&lt;/strong&gt; of the language model.&lt;/p&gt;
+
+&lt;p&gt;Consider a test dataset consisting of sentences, \(s_1, \cdots, s_m\), then \(p(s_i)\) gives probability for sentence \(s_i\) in the language model.&lt;/p&gt;
+
+&lt;p&gt;A basic measure of quality of language model would be the probability it assigns to the entire test set, give by&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\prod_{i=1}^m p(s_i)&lt;/script&gt;
+
+&lt;p&gt;So, higher the quantity is, the better the language model is at modeling unseen sentences.&lt;/p&gt;
+
+&lt;p&gt;Perplexity is a direct transformation of this basic defination. Let M be the total number of words in the corpus, then &lt;strong&gt;average log probability&lt;/strong&gt; under the model is&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;{1 \over M} log \prod_{i=1}^m p(s_i) = {1 \over M} \sum_{i=1}^m log \,p(s_i)&lt;/script&gt;
+
+&lt;p&gt;which is the log probability of the entire corpus, divided by the total number of words in the corpus. Again the higher the value of this, the better the language model.&lt;/p&gt;
+
+&lt;p&gt;Then, &lt;strong&gt;Perplexity&lt;/strong&gt; is defined as&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;2^{-l} \tag{2}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;l = {1 \over M} \sum_{i=1}^m log_2\, p(s_i) \tag{3}&lt;/script&gt;
+
+&lt;p&gt;The perplexity is a positive number. The smaller the value of perplexity, the better the language model is at modeling unseen data. Perplexity becomes a minimization parameter because of the negative power that is applied to the defination.&lt;/p&gt;
+
+&lt;h3 id=&quot;intuition-for-perplexity&quot;&gt;Intuition for Perplexity&lt;/h3&gt;
+&lt;p&gt;Let the vocabulary, \(\nu\) have N words, and the model predicts uniform distribution over the vocabulary, i.e.,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;q(w|u,v) = {1 \over N}&lt;/script&gt;
+
+&lt;p&gt;Then evaluating (3) using (1),&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    l  &amp;= {1 \over M} \sum_{i=1}^m log_2\, p(s_i) \\
+    &amp;= {1 \over M} \left[log_2\,  \left({1 \over N}\right)^{n_1} + \cdots +  log_2\, \left({1 \over N}\right)^{n_m} \right] \\
+    &amp;= - {1 \over M} * log_2\,N * (n_1 + n_2 + \cdots + n_m) \\
+    &amp;= - log_2\, N \tag{4}
+  \end{align} %]]&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where \(n_1, n_2, \cdots, n_m\) are the number of words in each sentence in the test sample and,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;n_1, n_2, \cdots, n_m = M&lt;/script&gt;
+
+&lt;p&gt;Using (4) in (2),&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Perplexity = 2^{-l} = 2^{-(-log_2\,N)} = N \tag{5}&lt;/script&gt;
+
+&lt;p&gt;So, &lt;strong&gt;under a uniform distribution model, the perplexity is equal to the vocabulary size&lt;/strong&gt;. Perplexity can be considered the effective vocabulary size under the model.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Properties of perplexity&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;If for any trigram u, v, w, the estimated probability \(q(w|u, v) = 0\) then the &lt;strong&gt;perplexity will be \(\infty\)&lt;/strong&gt; which is consistent with the rule stating that a good model should not predict probability zero for an unseen dataset and perplexity is low for good models.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;If perplexity is the measure of language model, then &lt;strong&gt;0 estimates should be avoided&lt;/strong&gt; at all costs.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;linear-interpolation&quot;&gt;Linear Interpolation&lt;/h3&gt;
+&lt;p&gt;The following &lt;strong&gt;trigram, bigram and unigram maximum-likelihood estimates&lt;/strong&gt; are defined,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    q_{ML}(w|u, v) &amp;= {c(u,v,w) \over c(u,v)} \\
+    q_{ML}(w|v) &amp;= {c(v,w) \over c(v)} \\
+    q_{ML}(w) &amp;= {c(w) \over c()} \\
+  \end{align} %]]&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where
+    &lt;ul&gt;
+      &lt;li&gt;\(c(u,v,w)\) is the number of times trigram u, v, w occurs&lt;/li&gt;
+      &lt;li&gt;\(c(v,w)\) is the number of times bigram v, w occurs&lt;/li&gt;
+      &lt;li&gt;\(c(w)\) is the number of times unigram w occurs&lt;/li&gt;
+      &lt;li&gt;\(c()\) is the total number of words seen in the training&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Properties&lt;/strong&gt; of these models:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The &lt;strong&gt;unigram model&lt;/strong&gt; will never face the issue of number or denominator being 0, so the estimate is always well defined and greater than 0. But it completely ignores the context and hence discards valuable information.&lt;/li&gt;
+  &lt;li&gt;The &lt;strong&gt;trigram model&lt;/strong&gt; use the context better than the unigram model, but has the problem of many of its counts being 0 rendering estimate value 0 or undefined.&lt;/li&gt;
+  &lt;li&gt;The &lt;strong&gt;bigram model&lt;/strong&gt; falls between the two extremes.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Linear Interpolation&lt;/strong&gt; uses all three of these estimates to define the trigram estimate as follows,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;q(w|u, v) = \lambda_1 * q_{ML}(w|u, v) + \lambda_2 * q_{ML}(w|v) + \lambda_3 * q_{ML}(w) \tag{6}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\lambda_1 \ge 0,\,\lambda_2 \ge 0,\,\lambda_3 \ge 0&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\lambda_1 + \lambda_2 + \lambda_3 = 1&lt;/script&gt;
+
+&lt;p&gt;i.e. (6) is a &lt;strong&gt;weighted average&lt;/strong&gt; of the three estimates.&lt;/p&gt;
+
+&lt;h3 id=&quot;discounting-methods-and-katz-back-off&quot;&gt;Discounting Methods and Katz Back-off&lt;/h3&gt;
+&lt;p&gt;An alternative estimation method commonly used in practice.&lt;/p&gt;
+
+&lt;p&gt;Consider a bigram language model where the following parameter is to be found,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;q(w|v) \tag{7}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where
+    &lt;ul&gt;
+      &lt;li&gt;\(w \in \nu \cup \) {STOP}&lt;/li&gt;
+      &lt;li&gt;\(v \in \nu \cup\) {*}&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Discounted Counts&lt;/strong&gt; are used to reflect the intuition that if the counts are taken from the training corpus, there would be a systematic over-estimation of probability of bigrams seen in the corpus and hence underestimate the bigrams not seen in the corpus. So, discounted count is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;c^*(v, w) = c(v,w) - 0.5&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where
+    &lt;ul&gt;
+      &lt;li&gt;\(c^*(v, w)\) is the discounted count&lt;/li&gt;
+      &lt;li&gt;\(c(v,w)\) is the count of bigrams, such that, \(c(v,w) \gt 0\)&lt;/li&gt;
+      &lt;li&gt;0.5 is the discount value&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Using the discounted count, (7) can be written as,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;q(w|v) = {c^*(v, w) \over c(v)}&lt;/script&gt;
+
+&lt;p&gt;i.e., use the discounted count in the numberator and regular count in the denominator.&lt;/p&gt;
+
+&lt;p&gt;For any context \(v\), there is a &lt;strong&gt;missing mass&lt;/strong&gt;, defined as,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\alpha(v) = 1 - \sum_w {c^*(v, w) \over c(v)}&lt;/script&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The intuition behind discounted methods is to divide the missing mass among words \(w\), such that \(c(v,w) = 0\).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Formally, for any \(v\), there exist sets&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    A(v) &amp;= {w: c(v,w) &gt; 0} \\
+    B(v) &amp;= {w: c(v,w) = 0}
+  \end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Then the estimate is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+q_{BO}(w|v) = 
+  \begin{cases}
+    {c^*(v, w) \over c(v)} &amp; If w \in A(v)\\
+    \alpha(v) * {q_{ML}(w) \over \sum_{w \in B(v)} q_{ML}(w)} &amp; If w \in B(v)
+  \end{cases}
+  \tag{8} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;i.e if \(c(v,w) \gt 0\) return \({c^*(v, w) \over c(v)}\) else divide the remaining probability mass \(\alpha(v)\) in proportion to the unigram estimates \(q_{ML}(w)\).&lt;/p&gt;
+
+&lt;p&gt;This method can be generalized to &lt;strong&gt;trigram language model&lt;/strong&gt; in a recursive way, i.e., for any bigram (u, v) define,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    A(u,v) &amp;= {w: c(u,v,w) &gt; 0} \\
+    B(u,v) &amp;= {w: c(u,v,w) = 0}
+  \end{align} %]]&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where 0.5 is the discount value and hence discounted count is given by,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;c^*(u, v, w) = c(u,v,w) - 0.5&lt;/script&gt;
+
+&lt;p&gt;Then the trigram model is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+q_{BO}(w|v) = 
+  \begin{cases}
+    {c^*(u, v, w) \over c(u, v)} &amp; If w \in A(u, v)\\
+    \alpha(u, v) * {q_{BO}(w|v) \over \sum_{w \in B(u,v)} q_{BO}(w|v)} &amp; If w \in B(u,v)
+  \end{cases} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;where&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\alpha(u, v) = 1 - \sum_{w \in A(u,v)} {c^*(u, v, w) \over c(u, v)}&lt;/script&gt;
+
+&lt;p&gt;\(\alpha(u, v)\) is the missing probability mass of the bigram. It can be noted that the missing probability is distributed in proportion to the bigram estimaes \(q_{BO}(w|v)\) given in (8).&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;http://www.cs.columbia.edu/~mcollins/courses/nlp2011/notes/lm.pdf&quot; target=&quot;_blank&quot;&gt;Language Modeling - Michael Collins&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 12 Sep 2017 00:00:00 +0530</pubDate>
+        <link>https://machinelearningmedium.com/2017/09/12/basics-of-language-modeling/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2017/09/12/basics-of-language-modeling/</guid>
+        
+        <category>NLP</category>
+        
+        <category>machine learning</category>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
